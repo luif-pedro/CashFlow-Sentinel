@@ -2,7 +2,7 @@ import pandas as pd
 
 df = pd.read_csv("transacoes.csv")
 
-colunas_esperadas = ["id", "data", "descricao", "tipo", "valor"]
+colunas_esperadas = ["data", "descricao", "tipo", "valor"]
 
 if list(df.columns) == colunas_esperadas:
     print("Colunas corretas!")
