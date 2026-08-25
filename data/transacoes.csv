@@ -1,0 +1,6 @@
+id,data,descricao,tipo,valor
+1,2026-08-24,Venda Cliente A,entrada,2500
+2,2026-08-24,Pagamento Fornecedor X,saida,800
+3,2026-08-25,Venda Cliente B,entrada,1800
+4,2026-08-25,Conta de energia,saida,450
+5,2026-08-25,Serviço prestado,entrada,1200
