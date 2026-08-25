@@ -4,3 +4,4 @@ data,descricao,tipo,valor
 2026-08-25,Venda Cliente B,entrada,1800
 2026-08-25,Conta de energia,saida,450
 2026-08-25,Serviço prestado,entrada,1200
+2026-08-25,Compra de material,saida,300
