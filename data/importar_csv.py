@@ -16,17 +16,18 @@ print("CSV lido e banco conectado")
 
 for _, linha in df.iterrows():
     cursor.execute(
-        """
-        INSERT INTO transacoes (data, descricao, tipo, valor)
-        VALUES (%s, %s, %s, %s)
-        """,
-        (
-            linha["data"],
-            linha["descricao"],
-            linha["tipo"],
-            linha["valor"]
-        )
+    """
+    INSERT INTO transacoes (data, descricao, tipo, valor)
+    VALUES (%s, %s, %s, %s)
+    ON CONFLICT (data, descricao, tipo, valor) DO NOTHING
+    """,
+    (
+        linha["data"],
+        linha["descricao"],
+        linha["tipo"],
+        linha["valor"]
     )
+)
 
 conn.commit()
 
