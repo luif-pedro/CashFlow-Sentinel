@@ -1,8 +1,8 @@
 import pandas as pd
 import psycopg
 
-from normalizar import normalizar_descricao, gerar_fingerprint
-from validar import validar_dados
+from .normalizar import normalizar_descricao, gerar_fingerprint
+from .validar import validar_dados
 
 
 def importar_transacoes(arquivo, empresa_id):
