@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 
 from .database import conectar
 from data.importador import importar_transacoes
-
+from .services import calcular_fluxo_caixa
 
 app = FastAPI()
 
@@ -68,3 +68,20 @@ def importar_csv(arquivo: UploadFile = File(...)):
             status_code=500,
             detail="Erro interno ao importar transações."
         )
+
+@app.get("/fluxo-caixa")
+def fluxo_caixa(
+    data_inicio: str,
+    data_fim: str
+):
+    resultado = calcular_fluxo_caixa(
+        empresa_id=1,
+        data_inicio=data_inicio,
+        data_fim=data_fim
+    )
+
+    return {
+        "entradas": float(resultado["entradas"]),
+        "saidas": float(resultado["saidas"]),
+        "saldo": float(resultado["saldo"])
+    }
