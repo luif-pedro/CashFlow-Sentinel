@@ -107,7 +107,8 @@ def fluxo_caixa(
             "data": item["data"].isoformat(),
             "entradas": float(item["entradas"]),
             "saidas": float(item["saidas"]),
-            "saldo": float(item["saldo"])
+            "saldo": float(item["saldo"]),
+            "saldo_acumulado": float(item["saldo_acumulado"])
         }
         for item in diario
     ]

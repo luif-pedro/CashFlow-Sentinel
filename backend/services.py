@@ -55,13 +55,19 @@ def fluxo_caixa_diario(empresa_id, data_inicio, data_fim):
         resultados = cursor.fetchall()
 
         dias = []
+        saldo_acumulado = 0
 
         for data, entradas, saidas in resultados:
+
+            saldo_dia = entradas - saidas
+            saldo_acumulado += saldo_dia
+
             dias.append({
                 "data": data,
                 "entradas": entradas,
                 "saidas": saidas,
-                "saldo": entradas - saidas
+                "saldo": saldo_dia,
+                "saldo_acumulado": saldo_acumulado
             })
 
         return dias
