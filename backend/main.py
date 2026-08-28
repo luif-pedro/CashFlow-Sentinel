@@ -95,7 +95,7 @@ def fluxo_caixa(
     data_fim=data_fim
 )
 
-    alertas = verificar_alertas(resultado)
+    alertas = verificar_alertas(resultado, diario)
 
     return {
     "entradas": float(resultado["entradas"]),

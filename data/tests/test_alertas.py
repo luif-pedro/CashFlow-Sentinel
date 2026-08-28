@@ -39,3 +39,28 @@ def test_saidas_maiores_que_entradas():
         alerta["tipo"] == "saidas_maiores_que_entradas"
         for alerta in alertas
     )
+
+def test_despesa_acima_da_media():
+    resultado = {
+        "entradas": 7000,
+        "saidas": 6000,
+        "saldo": 1000
+    }
+
+    diario = [
+        {
+            "data": "2026-08-24",
+            "saidas": 1000
+        },
+        {
+            "data": "2026-08-25",
+            "saidas": 3500
+        }
+    ]
+
+    alertas = verificar_alertas(resultado, diario)
+
+    assert any(
+        alerta["tipo"] == "despesa_acima_da_media"
+        for alerta in alertas
+    )
