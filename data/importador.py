@@ -1,6 +1,6 @@
 import pandas as pd
-import psycopg
 
+from backend.database import conectar
 from .normalizar import normalizar_descricao, gerar_fingerprint
 from .validar import validar_dados
 
@@ -10,12 +10,7 @@ def importar_transacoes(arquivo, empresa_id):
 
     validar_dados(df)
 
-    conn = psycopg.connect(
-        host="localhost",
-        dbname="CashFlow",
-        user="postgres",
-        password="***REMOVED***"
-    )
+    conn = conectar()
 
     cursor = conn.cursor()
 
@@ -26,12 +21,13 @@ def importar_transacoes(arquivo, empresa_id):
         for _, linha in df.iterrows():
 
             descricao = normalizar_descricao(linha["descricao"])
+            tipo = str(linha["tipo"]).strip().lower()
 
             fingerprint = gerar_fingerprint(
                 empresa_id,
                 linha["data"],
                 descricao,
-                linha["tipo"],
+                tipo,
                 linha["valor"]
             )
 
@@ -51,8 +47,8 @@ def importar_transacoes(arquivo, empresa_id):
                 (
                     empresa_id,
                     linha["data"],
-                    descricao,
-                    linha["tipo"],
+                    descricao,  
+                    tipo,
                     linha["valor"],
                     fingerprint
                 )
