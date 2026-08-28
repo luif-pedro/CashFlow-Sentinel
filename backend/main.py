@@ -4,6 +4,8 @@ from .database import conectar
 from data.importador import importar_transacoes
 from .services import calcular_fluxo_caixa
 from .alertas import verificar_alertas
+from datetime import date
+from fastapi import FastAPI, UploadFile, File, HTTPException
 
 app = FastAPI()
 
@@ -72,16 +74,22 @@ def importar_csv(arquivo: UploadFile = File(...)):
 
 @app.get("/fluxo-caixa")
 def fluxo_caixa(
-    data_inicio: str,
-    data_fim: str
+    data_inicio: date,
+    data_fim: date
 ):
+    if data_inicio > data_fim:
+        raise HTTPException(
+            status_code=400,
+            detail="A data inicial não pode ser posterior à data final."
+        )
+
     resultado = calcular_fluxo_caixa(
         empresa_id=1,
         data_inicio=data_inicio,
         data_fim=data_fim
     )
 
-    alertas = verificar_alertas(resultado["saldo"])
+    alertas = verificar_alertas(resultado)
 
     return {
         "entradas": float(resultado["entradas"]),
