@@ -3,6 +3,7 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from .database import conectar
 from data.importador import importar_transacoes
 from .services import calcular_fluxo_caixa
+from .alertas import verificar_alertas
 
 app = FastAPI()
 
@@ -80,8 +81,11 @@ def fluxo_caixa(
         data_fim=data_fim
     )
 
+    alertas = verificar_alertas(resultado["saldo"])
+
     return {
         "entradas": float(resultado["entradas"]),
         "saidas": float(resultado["saidas"]),
-        "saldo": float(resultado["saldo"])
+        "saldo": float(resultado["saldo"]),
+        "alertas": alertas
     }
