@@ -22,11 +22,18 @@ def calcular_fluxo_caixa(empresa_id, data_inicio, data_fim):
 
         saldo = entradas - saidas
 
+        if saidas > 0:
+            cobertura = entradas / saidas
+        else:
+            cobertura = None
+
         return {
             "entradas": entradas,
             "saidas": saidas,
-            "saldo": saldo
+            "saldo": saldo,
+            "cobertura": cobertura
         }
+        
 
     finally:
         cursor.close()

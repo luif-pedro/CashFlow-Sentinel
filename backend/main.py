@@ -101,6 +101,7 @@ def fluxo_caixa(
     "entradas": float(resultado["entradas"]),
     "saidas": float(resultado["saidas"]),
     "saldo": float(resultado["saldo"]),
+    "cobertura": float(resultado["cobertura"]) if resultado["cobertura"] is not None else None,
     "alertas": alertas,
     "diario": [
         {
