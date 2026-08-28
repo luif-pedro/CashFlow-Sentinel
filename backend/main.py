@@ -1,8 +1,8 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 
-from .database import conectar
+from backend.database import conectar
 from data.importador import importar_transacoes
-from .services import calcular_fluxo_caixa
+from backend.services import calcular_fluxo_caixa, fluxo_caixa_diario
 from .alertas import verificar_alertas
 from datetime import date
 from fastapi import FastAPI, UploadFile, File, HTTPException
@@ -88,12 +88,27 @@ def fluxo_caixa(
         data_inicio=data_inicio,
         data_fim=data_fim
     )
+    
+    diario = fluxo_caixa_diario(
+    empresa_id=1,
+    data_inicio=data_inicio,
+    data_fim=data_fim
+)
 
     alertas = verificar_alertas(resultado)
 
     return {
-        "entradas": float(resultado["entradas"]),
-        "saidas": float(resultado["saidas"]),
-        "saldo": float(resultado["saldo"]),
-        "alertas": alertas
-    }
+    "entradas": float(resultado["entradas"]),
+    "saidas": float(resultado["saidas"]),
+    "saldo": float(resultado["saldo"]),
+    "alertas": alertas,
+    "diario": [
+        {
+            "data": item["data"].isoformat(),
+            "entradas": float(item["entradas"]),
+            "saidas": float(item["saidas"]),
+            "saldo": float(item["saldo"])
+        }
+        for item in diario
+    ]
+}
