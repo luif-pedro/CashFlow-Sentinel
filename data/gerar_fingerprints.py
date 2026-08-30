@@ -1,15 +1,8 @@
-import psycopg
+from backend.database import conectar
+from data.normalizar import normalizar_descricao, gerar_fingerprint
 
-from normalizar import normalizar_descricao, gerar_fingerprint
 
-
-conn = psycopg.connect(
-    host="localhost",
-    dbname="CashFlow",
-    user="postgres",
-    password="***REMOVED***"
-)
-
+conn = conectar()
 cursor = conn.cursor()
 
 cursor.execute("""
