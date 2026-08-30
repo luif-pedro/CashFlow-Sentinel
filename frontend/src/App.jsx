@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import {
   LayoutDashboard,
@@ -31,32 +31,92 @@ import {
 import './App.css'
 
 
+const API_URL = 'http://localhost:8000'
+
+
+async function buscarDadosDashboard() {
+  const [respostaFluxo, respostaTransacoes] = await Promise.all([
+    fetch(
+      `${API_URL}/fluxo-caixa?data_inicio=2026-08-24&data_fim=2026-08-25`
+    ),
+
+    fetch(
+      `${API_URL}/transacoes`
+    ),
+  ])
+
+
+  if (!respostaFluxo.ok || !respostaTransacoes.ok) {
+    throw new Error(
+      'Não foi possível carregar os dados do dashboard.'
+    )
+  }
+
+
+  const dadosFluxo = await respostaFluxo.json()
+  const dadosTransacoes = await respostaTransacoes.json()
+
+
+  return {
+    fluxo: dadosFluxo,
+    transacoes: Array.isArray(dadosTransacoes.transacoes)
+      ? dadosTransacoes.transacoes
+      : [],
+  }
+}
+
+
 function App() {
   const [fluxo, setFluxo] = useState(null)
   const [transacoes, setTransacoes] = useState([])
 
+  const [erroDados, setErroDados] = useState(false)
+
+  const [importando, setImportando] = useState(false)
+
+  const [
+    mensagemImportacao,
+    setMensagemImportacao,
+  ] = useState('')
+
+  const [
+    erroImportacao,
+    setErroImportacao,
+  ] = useState('')
+
+
+  const inputArquivoRef = useRef(null)
+
 
   useEffect(() => {
-    async function carregarDados() {
-      const respostaFluxo = await fetch(
-        'http://localhost:8000/fluxo-caixa?data_inicio=2026-08-24&data_fim=2026-08-25'
-      )
-
-      const respostaTransacoes = await fetch(
-        'http://localhost:8000/transacoes'
-      )
+    let componenteAtivo = true
 
 
-      const dadosFluxo = await respostaFluxo.json()
-      const dadosTransacoes = await respostaTransacoes.json()
+    async function carregarDadosIniciais() {
+      try {
+        const dados = await buscarDadosDashboard()
 
+        if (componenteAtivo) {
+          setFluxo(dados.fluxo)
+          setTransacoes(dados.transacoes)
+          setErroDados(false)
+        }
+      } catch (erro) {
+        console.error(erro)
 
-      setFluxo(dadosFluxo)
-      setTransacoes(dadosTransacoes.transacoes)
+        if (componenteAtivo) {
+          setErroDados(true)
+        }
+      }
     }
 
 
-    carregarDados()
+    carregarDadosIniciais()
+
+
+    return () => {
+      componenteAtivo = false
+    }
   }, [])
 
 
@@ -75,14 +135,106 @@ function App() {
   }
 
 
+  async function importarArquivo(event) {
+    const input = event.target
+    const arquivo = input.files?.[0]
+
+
+    if (!arquivo) {
+      return
+    }
+
+
+    setImportando(true)
+    setMensagemImportacao('')
+    setErroImportacao('')
+
+
+    try {
+      const formulario = new FormData()
+
+      formulario.append(
+        'arquivo',
+        arquivo
+      )
+
+
+      const resposta = await fetch(
+        `${API_URL}/importar`,
+        {
+          method: 'POST',
+          body: formulario,
+        }
+      )
+
+
+      if (!resposta.ok) {
+        let mensagemErro =
+          'Não foi possível importar o arquivo.'
+
+
+        try {
+          const dadosErro = await resposta.json()
+
+          if (typeof dadosErro.detail === 'string') {
+            mensagemErro = dadosErro.detail
+          }
+        } catch {
+          // Mantém a mensagem padrão
+        }
+
+
+        throw new Error(mensagemErro)
+      }
+
+
+      await resposta.json()
+
+
+      const dadosAtualizados =
+        await buscarDadosDashboard()
+
+
+      setFluxo(
+        dadosAtualizados.fluxo
+      )
+
+      setTransacoes(
+        dadosAtualizados.transacoes
+      )
+
+      setErroDados(false)
+
+
+      setMensagemImportacao(
+        `Arquivo "${arquivo.name}" processado com sucesso.`
+      )
+    } catch (erro) {
+      console.error(erro)
+
+      setErroImportacao(
+        erro.message ||
+          'Erro ao importar o arquivo.'
+      )
+    } finally {
+      setImportando(false)
+
+      input.value = ''
+    }
+  }
+
+
   const dadosGrafico = fluxo
     ? fluxo.diario.map((item) => ({
         data: new Date(
           `${item.data}T00:00:00`
-        ).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: '2-digit',
-        }),
+        ).toLocaleDateString(
+          'pt-BR',
+          {
+            day: '2-digit',
+            month: '2-digit',
+          }
+        ),
 
         saldo: item.saldo_acumulado,
       }))
@@ -90,33 +242,49 @@ function App() {
 
 
   const temAlertas =
-    fluxo && fluxo.alertas.length > 0
+    fluxo &&
+    fluxo.alertas.length > 0
 
 
   const saldoNegativo =
-    fluxo && fluxo.saldo < 0
+    fluxo &&
+    fluxo.saldo < 0
 
 
   const alertaDespesa =
     fluxo?.alertas.some(
       (alerta) =>
-        alerta.tipo === 'despesa_acima_da_media'
+        alerta.tipo ===
+        'despesa_acima_da_media'
     )
 
 
-  const transacoesRecentes = [...transacoes]
-    .sort((a, b) => {
-      const diferencaData =
-        new Date(`${b.data}T00:00:00`) -
-        new Date(`${a.data}T00:00:00`)
+  const transacoesRecentes =
+    [...transacoes]
+      .sort((a, b) => {
+        const diferencaData =
+          new Date(
+            `${b.data}T00:00:00`
+          ) -
+          new Date(
+            `${a.data}T00:00:00`
+          )
 
-      if (diferencaData !== 0) {
-        return diferencaData
-      }
 
-      return b.id - a.id
-    })
-    .slice(0, 4)
+        if (diferencaData !== 0) {
+          return diferencaData
+        }
+
+
+        return b.id - a.id
+      })
+      .slice(0, 4)
+
+
+  const textoCarregamento =
+    erroDados
+      ? 'Erro ao carregar'
+      : 'Carregando...'
 
 
   return (
@@ -222,8 +390,10 @@ function App() {
 
             <strong className="kpi-value">
               {fluxo
-                ? formatarMoeda(fluxo.saldo)
-                : 'Carregando...'}
+                ? formatarMoeda(
+                    fluxo.saldo
+                  )
+                : textoCarregamento}
             </strong>
 
 
@@ -249,8 +419,10 @@ function App() {
 
             <strong className="kpi-value">
               {fluxo
-                ? formatarMoeda(fluxo.entradas)
-                : 'Carregando...'}
+                ? formatarMoeda(
+                    fluxo.entradas
+                  )
+                : textoCarregamento}
             </strong>
 
 
@@ -276,8 +448,10 @@ function App() {
 
             <strong className="kpi-value">
               {fluxo
-                ? formatarMoeda(fluxo.saidas)
-                : 'Carregando...'}
+                ? formatarMoeda(
+                    fluxo.saidas
+                  )
+                : textoCarregamento}
             </strong>
 
 
@@ -302,11 +476,14 @@ function App() {
 
 
             <strong className="kpi-value">
-              {fluxo && fluxo.cobertura !== null
-                ? `${fluxo.cobertura
-                    .toFixed(2)
-                    .replace('.', ',')}x`
-                : 'Carregando...'}
+              {!fluxo
+                ? textoCarregamento
+                : fluxo.cobertura === null
+                  ? '—'
+                  : `${fluxo.cobertura
+                      .toFixed(2)
+                      .replace('.', ',')}x`
+              }
             </strong>
 
 
@@ -439,7 +616,9 @@ function App() {
                     formatter={(value) => [
                       `R$ ${Number(
                         value
-                      ).toLocaleString('pt-BR')}`,
+                      ).toLocaleString(
+                        'pt-BR'
+                      )}`,
                       'Saldo',
                     ]}
                   />
@@ -521,8 +700,16 @@ function App() {
               >
 
                 {temAlertas
-                  ? <AlertTriangle size={21} />
-                  : <CheckCircle2 size={21} />
+                  ? (
+                    <AlertTriangle
+                      size={21}
+                    />
+                  )
+                  : (
+                    <CheckCircle2
+                      size={21}
+                    />
+                  )
                 }
 
               </div>
@@ -567,7 +754,9 @@ function App() {
                     />
                   )
                   : (
-                    <CheckCircle2 size={17} />
+                    <CheckCircle2
+                      size={17}
+                    />
                   )
                 }
 
@@ -596,7 +785,9 @@ function App() {
 
               <div className="monitor-item">
 
-                <CheckCircle2 size={17} />
+                <CheckCircle2
+                  size={17}
+                />
 
 
                 <div>
@@ -607,7 +798,8 @@ function App() {
 
 
                   <span>
-                    {fluxo && fluxo.cobertura !== null
+                    {fluxo &&
+                    fluxo.cobertura !== null
                       ? `As entradas cobrem ${fluxo.cobertura
                           .toFixed(2)
                           .replace('.', ',')}x o total de saídas.`
@@ -630,7 +822,9 @@ function App() {
                     />
                   )
                   : (
-                    <CheckCircle2 size={17} />
+                    <CheckCircle2
+                      size={17}
+                    />
                   )
                 }
 
@@ -654,31 +848,37 @@ function App() {
               </div>
 
 
-              {fluxo?.alertas.map((alerta, index) => (
+              {fluxo?.alertas.map(
+                (alerta, index) => (
 
-                <div
-                  className="monitor-item alert-message"
-                  key={`${alerta.tipo}-${index}`}
-                >
+                  <div
+                    className="monitor-item alert-message"
+                    key={
+                      `${alerta.tipo}-${index}`
+                    }
+                  >
 
-                  <AlertTriangle size={17} />
+                    <AlertTriangle
+                      size={17}
+                    />
 
 
-                  <div>
+                    <div>
 
-                    <strong>
-                      Alerta
-                    </strong>
+                      <strong>
+                        Alerta
+                      </strong>
 
-                    <span>
-                      {alerta.mensagem}
-                    </span>
+                      <span>
+                        {alerta.mensagem}
+                      </span>
+
+                    </div>
 
                   </div>
 
-                </div>
-
-              ))}
+                )
+              )}
 
             </div>
 
@@ -721,11 +921,17 @@ function App() {
 
                   <tr>
 
-                    <th>Data</th>
+                    <th>
+                      Data
+                    </th>
 
-                    <th>Descrição</th>
+                    <th>
+                      Descrição
+                    </th>
 
-                    <th>Tipo</th>
+                    <th>
+                      Tipo
+                    </th>
 
                     <th className="value-column">
                       Valor
@@ -738,63 +944,78 @@ function App() {
 
                 <tbody>
 
-                  {transacoesRecentes.map((transacao) => {
+                  {transacoesRecentes.map(
+                    (transacao) => {
 
-                    const entrada =
-                      transacao.tipo === 'entrada'
-
-
-                    return (
-                      <tr key={transacao.id}>
-
-                        <td>
-                          {formatarData(transacao.data)}
-                        </td>
+                      const entrada =
+                        transacao.tipo ===
+                        'entrada'
 
 
-                        <td>
-                          {transacao.descricao}
-                        </td>
+                      return (
+                        <tr
+                          key={
+                            transacao.id
+                          }
+                        >
+
+                          <td>
+                            {formatarData(
+                              transacao.data
+                            )}
+                          </td>
 
 
-                        <td>
+                          <td>
+                            {
+                              transacao.descricao
+                            }
+                          </td>
 
-                          <span
+
+                          <td>
+
+                            <span
+                              className={
+                                `transaction-type ${
+                                  entrada
+                                    ? 'entrance'
+                                    : 'expense'
+                                }`
+                              }
+                            >
+                              {entrada
+                                ? 'Entrada'
+                                : 'Saída'
+                              }
+                            </span>
+
+                          </td>
+
+
+                          <td
                             className={
-                              `transaction-type ${
+                              `transaction-value ${
                                 entrada
-                                  ? 'entrance'
-                                  : 'expense'
+                                  ? 'entrance-value'
+                                  : 'expense-value'
                               }`
                             }
                           >
                             {entrada
-                              ? 'Entrada'
-                              : 'Saída'
+                              ? '+ '
+                              : '- '
                             }
-                          </span>
 
-                        </td>
+                            {formatarMoeda(
+                              transacao.valor
+                            )}
+                          </td>
 
-
-                        <td
-                          className={
-                            `transaction-value ${
-                              entrada
-                                ? 'entrance-value'
-                                : 'expense-value'
-                            }`
-                          }
-                        >
-                          {entrada ? '+ ' : '- '}
-                          {formatarMoeda(
-                            transacao.valor
-                          )}
-                        </td>
-
-                      </tr>
-                    )
-                  })}
+                        </tr>
+                      )
+                    }
+                  )}
 
                 </tbody>
 
@@ -847,15 +1068,52 @@ function App() {
               </p>
 
 
-              <button className="upload-button">
+              <input
+                ref={inputArquivoRef}
+                className="file-input"
+                type="file"
+                accept=".csv,text/csv"
+                onChange={importarArquivo}
+                disabled={importando}
+              />
+
+
+              <button
+                className="upload-button"
+                type="button"
+                disabled={importando}
+                onClick={() =>
+                  inputArquivoRef.current?.click()
+                }
+              >
+
                 <Upload size={16} />
-                Selecionar arquivo
+
+                {importando
+                  ? 'Importando...'
+                  : 'Selecionar arquivo'
+                }
+
               </button>
 
 
               <span className="upload-hint">
                 Formato aceito: .csv
               </span>
+
+
+              {mensagemImportacao && (
+                <span className="upload-feedback success">
+                  {mensagemImportacao}
+                </span>
+              )}
+
+
+              {erroImportacao && (
+                <span className="upload-feedback error">
+                  {erroImportacao}
+                </span>
+              )}
 
             </div>
 
