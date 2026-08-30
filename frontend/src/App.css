@@ -5,6 +5,7 @@
   color: #111522;
 }
 
+
 /* Sidebar */
 
 .sidebar {
@@ -34,7 +35,9 @@
   border-radius: 10px;
   background: #6d3fc6;
   color: white;
-  box-shadow: 0 5px 12px rgba(109, 63, 198, 0.18);
+  box-shadow:
+    0 5px 12px
+    rgba(109, 63, 198, 0.18);
 }
 
 .brand div:last-child {
@@ -53,6 +56,9 @@
   font-size: 12px;
   color: #777681;
 }
+
+
+/* Navegação */
 
 .sidebar-nav {
   display: flex;
@@ -92,6 +98,9 @@
   font-weight: 600;
 }
 
+
+/* Nota lateral */
+
 .sidebar-note {
   margin-top: auto;
   padding: 15px;
@@ -107,6 +116,7 @@
   color: #77727f;
 }
 
+
 /* Conteúdo */
 
 .main-content {
@@ -115,7 +125,8 @@
   padding: 28px 40px 48px;
 }
 
-/* Header */
+
+/* Cabeçalho */
 
 .page-header {
   min-height: 70px;
@@ -147,6 +158,9 @@
   color: #5f606a;
 }
 
+
+/* Seletor de período */
+
 .period-selector {
   height: 42px;
   display: flex;
@@ -159,7 +173,9 @@
   color: #363640;
   font-size: 13px;
   font-weight: 500;
-  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.035);
+  box-shadow:
+    0 2px 8px
+    rgba(20, 20, 20, 0.035);
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
@@ -168,15 +184,19 @@
 
 .period-selector:hover {
   border-color: #d9d2e4;
-  box-shadow: 0 4px 12px rgba(20, 20, 20, 0.055);
+  box-shadow:
+    0 4px 12px
+    rgba(20, 20, 20, 0.055);
   transform: translateY(-1px);
 }
+
 
 /* KPIs */
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
   gap: 18px;
   margin-bottom: 18px;
 }
@@ -189,7 +209,9 @@
   border: 1px solid #ece9e2;
   border-radius: 11px;
   background: white;
-  box-shadow: 0 3px 12px rgba(20, 20, 20, 0.045);
+  box-shadow:
+    0 3px 12px
+    rgba(20, 20, 20, 0.045);
   transition:
     transform 0.16s ease,
     box-shadow 0.16s ease,
@@ -199,7 +221,9 @@
 .kpi-card:hover {
   transform: translateY(-2px);
   border-color: #e5e0d7;
-  box-shadow: 0 7px 18px rgba(20, 20, 20, 0.065);
+  box-shadow:
+    0 7px 18px
+    rgba(20, 20, 20, 0.065);
 }
 
 .kpi-header {
@@ -262,7 +286,8 @@
   color: #d9554e;
 }
 
-/* Grid das linhas */
+
+/* Linhas do dashboard */
 
 .dashboard-row {
   display: grid;
@@ -279,7 +304,9 @@
   border: 1px solid #ece9e2;
   border-radius: 11px;
   background: white;
-  box-shadow: 0 3px 12px rgba(20, 20, 20, 0.045);
+  box-shadow:
+    0 3px 12px
+    rgba(20, 20, 20, 0.045);
 }
 
 .card-title-row {
@@ -323,6 +350,12 @@
   color: #499653;
 }
 
+.coral-soft {
+  background: #fcefed;
+  color: #e95048;
+}
+
+
 /* Gráfico */
 
 .chart-card {
@@ -334,6 +367,7 @@
   height: 235px;
   margin-top: 15px;
 }
+
 
 /* Monitoramento */
 
@@ -389,6 +423,34 @@
   color: #638069;
 }
 
+
+/* Estado de alerta */
+
+.health-status.warning {
+  border-color: #f1d4d1;
+  background: #fdf1ef;
+}
+
+.health-status-icon.warning {
+  background: #f9dfdc;
+  color: #e95048;
+}
+
+.health-status.warning .health-label {
+  color: #a96b65;
+}
+
+.health-status.warning strong {
+  color: #a8403a;
+}
+
+.health-status.warning p {
+  color: #94635f;
+}
+
+
+/* Lista de monitoramento */
+
 .monitor-list {
   margin-top: 10px;
 }
@@ -428,6 +490,16 @@
   line-height: 1.4;
   color: #777985;
 }
+
+.monitor-warning-icon,
+.alert-message > svg {
+  color: #e95048 !important;
+}
+
+.alert-message strong {
+  color: #b0443e;
+}
+
 
 /* Transações */
 
@@ -506,6 +578,7 @@
   color: #d94d46 !important;
 }
 
+
 /* Importação */
 
 .import-card {
@@ -562,7 +635,9 @@
   color: white;
   font-size: 11.5px;
   font-weight: 600;
-  box-shadow: 0 4px 10px rgba(109, 63, 198, 0.18);
+  box-shadow:
+    0 4px 10px
+    rgba(109, 63, 198, 0.18);
   transition:
     background 0.15s ease,
     transform 0.15s ease,
@@ -572,7 +647,9 @@
 .upload-button:hover {
   background: #5e34b1;
   transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(109, 63, 198, 0.23);
+  box-shadow:
+    0 6px 14px
+    rgba(109, 63, 198, 0.23);
 }
 
 .upload-hint {
@@ -581,11 +658,13 @@
   color: #9997a0;
 }
 
+
 /* Responsividade */
 
 @media (max-width: 1180px) {
   .kpi-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
   }
 
   .dashboard-row {
@@ -596,6 +675,7 @@
     height: 280px;
   }
 }
+
 
 @media (max-width: 760px) {
   .sidebar {

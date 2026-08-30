@@ -1,13 +1,27 @@
+from datetime import date
+
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import conectar
-from data.importador import importar_transacoes
 from backend.services import calcular_fluxo_caixa, fluxo_caixa_diario
-from .alertas import verificar_alertas
-from datetime import date
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from backend.alertas import verificar_alertas
+from data.importador import importar_transacoes
+
 
 app = FastAPI()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -21,12 +35,15 @@ def listar_transacoes():
     cursor = conn.cursor()
 
     try:
-        cursor.execute("""
+        cursor.execute(
+            """
             SELECT id, data, descricao, tipo, valor
             FROM transacoes
             WHERE empresa_id = %s
             ORDER BY id
-        """, (1,))
+            """,
+            (1,)
+        )
 
         resultados = cursor.fetchall()
 
@@ -72,6 +89,7 @@ def importar_csv(arquivo: UploadFile = File(...)):
             detail="Erro interno ao importar transações."
         )
 
+
 @app.get("/fluxo-caixa")
 def fluxo_caixa(
     data_inicio: date,
@@ -88,29 +106,33 @@ def fluxo_caixa(
         data_inicio=data_inicio,
         data_fim=data_fim
     )
-    
+
     diario = fluxo_caixa_diario(
-    empresa_id=1,
-    data_inicio=data_inicio,
-    data_fim=data_fim
-)
+        empresa_id=1,
+        data_inicio=data_inicio,
+        data_fim=data_fim
+    )
 
     alertas = verificar_alertas(resultado, diario)
 
     return {
-    "entradas": float(resultado["entradas"]),
-    "saidas": float(resultado["saidas"]),
-    "saldo": float(resultado["saldo"]),
-    "cobertura": float(resultado["cobertura"]) if resultado["cobertura"] is not None else None,
-    "alertas": alertas,
-    "diario": [
-        {
-            "data": item["data"].isoformat(),
-            "entradas": float(item["entradas"]),
-            "saidas": float(item["saidas"]),
-            "saldo": float(item["saldo"]),
-            "saldo_acumulado": float(item["saldo_acumulado"])
-        }
-        for item in diario
-    ]
-}
+        "entradas": float(resultado["entradas"]),
+        "saidas": float(resultado["saidas"]),
+        "saldo": float(resultado["saldo"]),
+        "cobertura": (
+            float(resultado["cobertura"])
+            if resultado["cobertura"] is not None
+            else None
+        ),
+        "alertas": alertas,
+        "diario": [
+            {
+                "data": item["data"].isoformat(),
+                "entradas": float(item["entradas"]),
+                "saidas": float(item["saidas"]),
+                "saldo": float(item["saldo"]),
+                "saldo_acumulado": float(item["saldo_acumulado"])
+            }
+            for item in diario
+        ]
+    }
