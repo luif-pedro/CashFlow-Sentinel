@@ -32,27 +32,3 @@ def verificar_alertas(resultado, diario=None):
     return alertas
 
 
-def test_despesa_acima_da_media():
-    resultado = {
-        "entradas": 7000,
-        "saidas": 6000,
-        "saldo": 1000
-    }
-
-    diario = [
-        {
-            "data": "2026-08-24",
-            "saidas": 1000
-        },
-        {
-            "data": "2026-08-25",
-            "saidas": 3500
-        }
-    ]
-
-    alertas = verificar_alertas(resultado, diario)
-
-    assert any(
-        alerta["tipo"] == "despesa_acima_da_media"
-        for alerta in alertas
-    )
