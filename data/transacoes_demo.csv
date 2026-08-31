@@ -1,0 +1,140 @@
+data,descricao,tipo,valor
+2026-06-01,Manutenção - Cliente Horizonte,entrada,1277.44
+2026-06-02,Manutenção - Cliente Prisma,entrada,1003.59
+2026-06-02,Material de escritório,saida,157.88
+2026-06-03,Compra de insumos,saida,571.22
+2026-06-03,Marketing digital,saida,648.76
+2026-06-04,Consultoria - Cliente Aurora,entrada,1715.29
+2026-06-05,Aluguel,saida,2839.82
+2026-06-05,Folha de pagamento,saida,5997.56
+2026-06-05,Hospedagem e infraestrutura,saida,142.86
+2026-06-05,Material de escritório,saida,372.77
+2026-06-08,Contabilidade,saida,678.21
+2026-06-08,Frete e entregas,saida,216.34
+2026-06-08,Transporte,saida,174.01
+2026-06-10,Internet,saida,222.04
+2026-06-10,Treinamento,saida,331.68
+2026-06-11,Consultoria - Cliente Vertex,entrada,2404.81
+2026-06-12,Software e ferramentas,saida,491.78
+2026-06-15,Consultoria - Cliente Atlas,entrada,3110.61
+2026-06-15,Consultoria - Cliente Aurora,entrada,1698.83
+2026-06-15,Energia elétrica,saida,397.11
+2026-06-15,Frete e entregas,saida,96.61
+2026-06-16,Compra de insumos,saida,320.79
+2026-06-16,Projeto - Cliente Horizonte,entrada,3428.25
+2026-06-17,Manutenção - Cliente Solaris,entrada,956.91
+2026-06-18,Manutenção de equipamento,saida,702.67
+2026-06-18,Marketing digital,saida,908.71
+2026-06-18,Telefonia,saida,170.92
+2026-06-19,Transporte,saida,123.63
+2026-06-22,Compra de insumos,saida,373.26
+2026-06-22,Impostos sobre faturamento,saida,1170.91
+2026-06-22,Pró-labore,saida,2436.82
+2026-06-24,Serviço terceirizado,saida,1430.23
+2026-06-25,Serviço terceirizado,saida,1674.05
+2026-06-26,Consultoria - Cliente Horizonte,entrada,1648.23
+2026-06-29,Hospedagem e infraestrutura,saida,246.96
+2026-06-29,Manutenção - Cliente Atlas,entrada,1172.19
+2026-06-29,Manutenção - Cliente Horizonte,entrada,1099.05
+2026-06-29,Taxas bancárias,saida,162.13
+2026-06-30,Serviço terceirizado,saida,1321.75
+2026-07-01,Manutenção - Cliente Atlas,entrada,1281.02
+2026-07-01,Manutenção - Cliente Aurora,entrada,1839.23
+2026-07-02,Serviço terceirizado,saida,1603.74
+2026-07-03,Projeto - Cliente Horizonte,entrada,4080.75
+2026-07-03,Transporte,saida,227.30
+2026-07-06,Aluguel,saida,2705.99
+2026-07-06,Folha de pagamento,saida,6467.57
+2026-07-07,Contabilidade,saida,616.54
+2026-07-07,Hospedagem e infraestrutura,saida,174.26
+2026-07-08,Projeto - Cliente Prisma,entrada,2799.38
+2026-07-09,Hospedagem e infraestrutura,saida,435.30
+2026-07-09,Implementação - Cliente Aurora,entrada,2914.05
+2026-07-09,Transporte,saida,94.70
+2026-07-10,Internet,saida,223.46
+2026-07-10,Marketing digital,saida,436.26
+2026-07-10,Material de escritório,saida,409.46
+2026-07-10,Treinamento,saida,156.02
+2026-07-10,Treinamento,saida,425.39
+2026-07-13,Implementação - Cliente Horizonte,entrada,3598.47
+2026-07-13,Projeto - Cliente Solaris,entrada,5140.16
+2026-07-13,Software e ferramentas,saida,464.39
+2026-07-14,Hospedagem e infraestrutura,saida,148.11
+2026-07-14,Serviço mensal - Cliente Horizonte,entrada,1873.15
+2026-07-15,Consultoria - Cliente Horizonte,entrada,1512.76
+2026-07-15,Energia elétrica,saida,440.43
+2026-07-15,Frete e entregas,saida,59.33
+2026-07-15,Transporte,saida,53.33
+2026-07-17,Marketing digital,saida,528.66
+2026-07-20,Frete e entregas,saida,150.42
+2026-07-20,Impostos sobre faturamento,saida,2727.11
+2026-07-20,Pró-labore,saida,2371.26
+2026-07-20,Telefonia,saida,174.34
+2026-07-20,Transporte,saida,61.32
+2026-07-21,Compra de insumos,saida,594.76
+2026-07-21,Manutenção de equipamento,saida,842.68
+2026-07-21,Suporte técnico - Cliente Prisma,entrada,1289.91
+2026-07-22,Marketing digital,saida,553.90
+2026-07-22,Material de escritório,saida,97.05
+2026-07-23,Frete e entregas,saida,261.06
+2026-07-23,Marketing digital,saida,232.33
+2026-07-24,Consultoria - Cliente Nexus,entrada,3040.50
+2026-07-24,Manutenção de equipamento,saida,449.95
+2026-07-24,Serviço mensal - Cliente Nexus,entrada,2282.35
+2026-07-24,Transporte,saida,137.49
+2026-07-24,Transporte,saida,51.13
+2026-07-27,Manutenção - Cliente Atlas,entrada,1638.16
+2026-07-27,Projeto - Cliente Orion,entrada,2522.93
+2026-07-27,Serviço terceirizado,saida,1754.63
+2026-07-28,Serviço mensal - Cliente Nexus,entrada,1913.94
+2026-07-29,Manutenção - Cliente Nexus,entrada,2386.64
+2026-07-29,Material de escritório,saida,308.94
+2026-07-30,Implementação - Cliente Orion,entrada,2091.03
+2026-07-31,Consultoria - Cliente Vertex,entrada,3247.33
+2026-08-04,Serviço mensal - Cliente Solaris,entrada,2469.69
+2026-08-05,Aluguel,saida,2663.01
+2026-08-05,Consultoria - Cliente Aurora,entrada,3472.77
+2026-08-05,Folha de pagamento,saida,6302.01
+2026-08-05,Suporte técnico - Cliente Aurora,entrada,921.39
+2026-08-05,Taxas bancárias,saida,75.88
+2026-08-06,Compra de insumos,saida,1136.20
+2026-08-06,Consultoria - Cliente Horizonte,entrada,1860.08
+2026-08-06,Manutenção de equipamento,saida,244.17
+2026-08-06,Taxas bancárias,saida,111.94
+2026-08-07,Contabilidade,saida,644.04
+2026-08-07,Transporte,saida,247.91
+2026-08-10,Internet,saida,214.10
+2026-08-10,Marketing digital,saida,1078.11
+2026-08-11,Material de escritório,saida,385.63
+2026-08-11,Serviço mensal - Cliente Nexus,entrada,1792.55
+2026-08-11,Serviço terceirizado,saida,384.31
+2026-08-12,Compra de insumos,saida,470.45
+2026-08-12,Software e ferramentas,saida,451.40
+2026-08-12,Taxas bancárias,saida,149.35
+2026-08-12,Treinamento,saida,517.22
+2026-08-13,Consultoria - Cliente Prisma,entrada,2624.51
+2026-08-13,Manutenção de equipamento,saida,259.28
+2026-08-14,Implementação - Cliente Atlas,entrada,4898.21
+2026-08-17,Compra de insumos,saida,914.97
+2026-08-17,Energia elétrica,saida,433.66
+2026-08-17,Serviço mensal - Cliente Prisma,entrada,1187.95
+2026-08-17,Taxas bancárias,saida,28.84
+2026-08-18,Frete e entregas,saida,53.47
+2026-08-18,Marketing digital,saida,218.48
+2026-08-18,Serviço terceirizado,saida,1317.05
+2026-08-18,Telefonia,saida,185.21
+2026-08-20,Frete e entregas,saida,252.77
+2026-08-20,Impostos sobre faturamento,saida,1856.61
+2026-08-20,Material de escritório,saida,116.86
+2026-08-20,Pró-labore,saida,2428.59
+2026-08-20,Treinamento,saida,412.84
+2026-08-21,Serviço mensal - Cliente Orion,entrada,1222.98
+2026-08-21,Serviço terceirizado,saida,639.38
+2026-08-24,Taxas bancárias,saida,160.19
+2026-08-25,Manutenção de equipamento,saida,393.89
+2026-08-25,Projeto - Cliente Horizonte,entrada,4201.62
+2026-08-26,Taxas bancárias,saida,130.33
+2026-08-27,Manutenção - Cliente Atlas,entrada,1061.13
+2026-08-27,Suporte técnico - Cliente Atlas,entrada,1516.37
+2026-08-31,Manutenção - Cliente Aurora,entrada,2352.61
+2026-08-31,Serviço mensal - Cliente Orion,entrada,1361.63

@@ -2,30 +2,112 @@ import {
   ShieldCheck,
   CheckCircle2,
   AlertTriangle,
+  Activity,
 } from 'lucide-react'
 
 import { formatarMoeda } from '../utils/formatters'
 
+
 function MonitoringPanel({ fluxo }) {
   const carregando = !fluxo
 
-  const temAlertas =
-    fluxo?.alertas?.length > 0
+  const alertas =
+    fluxo?.alertas ?? []
+
+
+  const alertasCriticos =
+    alertas.filter(
+      (alerta) =>
+        alerta.tipo === 'saldo_negativo' ||
+        alerta.tipo === 'saidas_maiores_que_entradas'
+    )
+
+
+  const picosSaida =
+    alertas.filter(
+      (alerta) =>
+        alerta.tipo === 'despesa_acima_da_media'
+    )
+
+
+  const temAlertasCriticos =
+    alertasCriticos.length > 0
+
+  const temPicos =
+    picosSaida.length > 0
 
   const saldoNegativo =
     fluxo?.saldo < 0
 
-  const alertaDespesa =
-    fluxo?.alertas?.some(
-      (alerta) =>
-        alerta.tipo === 'despesa_acima_da_media'
+
+  function textoAlertasCriticos() {
+    const quantidade =
+      alertasCriticos.length
+
+    if (quantidade === 1) {
+      return '1 alerta financeiro identificado no período.'
+    }
+
+    return `${quantidade} alertas financeiros identificados no período.`
+  }
+
+
+  function textoPicos() {
+    const quantidade =
+      picosSaida.length
+
+    if (quantidade === 1) {
+      return '1 pico de saída identificado no período.'
+    }
+
+    return `${quantidade} picos de saída identificados no período.`
+  }
+
+
+  function textoDiasComPicos() {
+    const quantidade =
+      picosSaida.length
+
+    if (quantidade === 1) {
+      return '1 dia apresentou saídas acima do padrão do período.'
+    }
+
+    return `${quantidade} dias apresentaram saídas acima do padrão do período.`
+  }
+
+
+  function formatarMensagemPico(mensagem) {
+    return mensagem.replace(
+      /(\d{4})-(\d{2})-(\d{2})/,
+      '$3/$2/$1'
     )
+  }
+
+
+  function textoSituacao() {
+    if (carregando) {
+      return 'Consultando dados financeiros.'
+    }
+
+    if (temAlertasCriticos) {
+      return textoAlertasCriticos()
+    }
+
+    if (temPicos) {
+      return textoPicos()
+    }
+
+    return 'Nenhum risco crítico detectado no período.'
+  }
+
 
   return (
     <article className="dashboard-card monitoring-card">
       <div className="card-title-row">
         <div>
-          <h2>Alertas e monitoramento</h2>
+          <h2>
+            Alertas e monitoramento
+          </h2>
 
           <p>
             Acompanhamento da saúde financeira
@@ -34,7 +116,7 @@ function MonitoringPanel({ fluxo }) {
 
         <div
           className={`small-icon ${
-            temAlertas
+            temAlertasCriticos
               ? 'coral-soft'
               : 'green-soft'
           }`}
@@ -43,22 +125,28 @@ function MonitoringPanel({ fluxo }) {
         </div>
       </div>
 
+
       <div
         className={`health-status ${
-          temAlertas ? 'warning' : ''
+          temAlertasCriticos
+            ? 'warning'
+            : ''
         }`}
       >
         <div
           className={`health-status-icon ${
-            temAlertas ? 'warning' : ''
+            temAlertasCriticos
+              ? 'warning'
+              : ''
           }`}
         >
-          {temAlertas ? (
+          {temAlertasCriticos ? (
             <AlertTriangle size={21} />
           ) : (
             <CheckCircle2 size={21} />
           )}
         </div>
+
 
         <div>
           <span className="health-label">
@@ -68,20 +156,17 @@ function MonitoringPanel({ fluxo }) {
           <strong>
             {carregando
               ? 'Carregando...'
-              : temAlertas
+              : temAlertasCriticos
                 ? 'Atenção necessária'
                 : 'Fluxo saudável'}
           </strong>
 
           <p>
-            {carregando
-              ? 'Consultando dados financeiros.'
-              : temAlertas
-                ? `${fluxo.alertas.length} alerta(s) identificado(s) no período.`
-                : 'Nenhum risco crítico detectado no período.'}
+            {textoSituacao()}
           </p>
         </div>
       </div>
+
 
       <div className="monitor-list">
         <div className="monitor-item">
@@ -109,6 +194,7 @@ function MonitoringPanel({ fluxo }) {
           </div>
         </div>
 
+
         <div className="monitor-item">
           <CheckCircle2 size={17} />
 
@@ -127,10 +213,11 @@ function MonitoringPanel({ fluxo }) {
           </div>
         </div>
 
+
         <div className="monitor-item">
-          {alertaDespesa ? (
-            <AlertTriangle
-              className="monitor-warning-icon"
+          {temPicos ? (
+            <Activity
+              className="monitor-info-icon"
               size={17}
             />
           ) : (
@@ -139,18 +226,19 @@ function MonitoringPanel({ fluxo }) {
 
           <div>
             <strong>
-              Despesas monitoradas
+              Picos de saída
             </strong>
 
             <span>
-              {alertaDespesa
-                ? 'Foi identificada uma despesa significativamente acima da média.'
-                : 'Nenhuma anomalia relevante foi identificada.'}
+              {temPicos
+                ? textoDiasComPicos()
+                : 'Nenhum pico relevante de saída foi identificado.'}
             </span>
           </div>
         </div>
 
-        {fluxo?.alertas?.map(
+
+        {alertasCriticos.map(
           (alerta, index) => (
             <div
               className="monitor-item alert-message"
@@ -159,10 +247,36 @@ function MonitoringPanel({ fluxo }) {
               <AlertTriangle size={17} />
 
               <div>
-                <strong>Alerta</strong>
+                <strong>
+                  Alerta financeiro
+                </strong>
 
                 <span>
                   {alerta.mensagem}
+                </span>
+              </div>
+            </div>
+          )
+        )}
+
+
+        {picosSaida.map(
+          (alerta, index) => (
+            <div
+              className="monitor-item event-message"
+              key={`${alerta.tipo}-${index}`}
+            >
+              <Activity size={17} />
+
+              <div>
+                <strong>
+                  Pico de saída
+                </strong>
+
+                <span>
+                  {formatarMensagemPico(
+                    alerta.mensagem
+                  )}
                 </span>
               </div>
             </div>
@@ -172,5 +286,6 @@ function MonitoringPanel({ fluxo }) {
     </article>
   )
 }
+
 
 export default MonitoringPanel

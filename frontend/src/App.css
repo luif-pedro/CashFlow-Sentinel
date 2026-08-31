@@ -776,3 +776,14 @@
 .period-apply:hover {
   background: #5e34b1;
 }
+
+/* Eventos de monitoramento */
+
+.monitor-info-icon,
+.event-message > svg {
+  color: #6d3fc6 !important;
+}
+
+.event-message strong {
+  color: #6d3fc6;
+}
