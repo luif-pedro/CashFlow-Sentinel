@@ -18,10 +18,19 @@ function App() {
   const [transacoes, setTransacoes] = useState([])
   const [erroDados, setErroDados] = useState(false)
 
+  const [dataInicio, setDataInicio] =
+    useState('2026-08-24')
+
+  const [dataFim, setDataFim] =
+    useState('2026-08-25')
+
 
   const carregarDados = useCallback(async () => {
     try {
-      const dados = await buscarDadosDashboard()
+      const dados = await buscarDadosDashboard(
+        dataInicio,
+        dataFim
+      )
 
       setFluxo(dados.fluxo)
       setTransacoes(dados.transacoes)
@@ -30,7 +39,7 @@ function App() {
       console.error(erro)
       setErroDados(true)
     }
-  }, [])
+  }, [dataInicio, dataFim])
 
 
   useEffect(() => {
@@ -38,12 +47,25 @@ function App() {
   }, [carregarDados])
 
 
+  function aplicarPeriodo(
+    novaDataInicio,
+    novaDataFim
+  ) {
+    setDataInicio(novaDataInicio)
+    setDataFim(novaDataFim)
+  }
+
+
   return (
     <div className="app-shell">
       <Sidebar />
 
       <main className="main-content">
-        <Header />
+        <Header
+          dataInicio={dataInicio}
+          dataFim={dataFim}
+          onAplicarPeriodo={aplicarPeriodo}
+        />
 
         <KpiGrid
           fluxo={fluxo}
@@ -52,7 +74,10 @@ function App() {
 
         <section className="dashboard-row">
           <CashFlowChart fluxo={fluxo} />
-          <MonitoringPanel fluxo={fluxo} />
+
+          <MonitoringPanel
+            fluxo={fluxo}
+          />
         </section>
 
         <section className="dashboard-row bottom-row">

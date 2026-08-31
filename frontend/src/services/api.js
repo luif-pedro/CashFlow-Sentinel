@@ -1,9 +1,12 @@
 const API_URL = 'http://localhost:8000'
 
 
-export async function buscarDadosDashboard() {
+export async function buscarDadosDashboard(
+  dataInicio = '2026-08-24',
+  dataFim = '2026-08-25'
+) {
   const respostaFluxo = await fetch(
-    `${API_URL}/fluxo-caixa?data_inicio=2026-08-24&data_fim=2026-08-25`
+    `${API_URL}/fluxo-caixa?data_inicio=${dataInicio}&data_fim=${dataFim}`
   )
 
   const respostaTransacoes = await fetch(
