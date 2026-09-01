@@ -6,7 +6,11 @@ import {
   Upload,
 } from 'lucide-react'
 
-function Sidebar() {
+
+function Sidebar({
+  itemAtivo,
+  onNavegar,
+}) {
   return (
     <aside className="sidebar">
       <div className="brand">
@@ -20,32 +24,67 @@ function Sidebar() {
         </div>
       </div>
 
+
       <nav className="sidebar-nav">
-        <button className="nav-item active">
+        <button
+          type="button"
+          className={`nav-item ${
+            itemAtivo === 'visao-geral'
+              ? 'active'
+              : ''
+          }`}
+          onClick={() =>
+            onNavegar('visao-geral')
+          }
+        >
           <LayoutDashboard size={18} />
           <span>Visão geral</span>
         </button>
 
-        <button className="nav-item">
-          <ChartNoAxesCombined size={18} />
-          <span>Fluxo de caixa</span>
-        </button>
 
-        <button className="nav-item">
+        <button
+          type="button"
+          className="nav-item"
+          disabled
+          title="Disponível após a integração com o Power BI"
+        >
           <BarChart3 size={18} />
           <span>Análises</span>
         </button>
 
-        <button className="nav-item">
+
+        <button
+          type="button"
+          className={`nav-item ${
+            itemAtivo === 'transacoes'
+              ? 'active'
+              : ''
+          }`}
+          onClick={() =>
+            onNavegar('transacoes')
+          }
+        >
           <ReceiptText size={18} />
           <span>Transações</span>
         </button>
 
-        <button className="nav-item">
+
+        <button
+          type="button"
+          className={`nav-item ${
+            itemAtivo === 'importar-dados'
+              ? 'active'
+              : ''
+          }`}
+          onClick={() =>
+            onNavegar('importar-dados')
+          }
+        >
           <Upload size={18} />
           <span>Importar dados</span>
         </button>
       </nav>
+
 
       <div className="sidebar-note">
         <p>
@@ -55,5 +94,6 @@ function Sidebar() {
     </aside>
   )
 }
+
 
 export default Sidebar

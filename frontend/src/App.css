@@ -822,3 +822,161 @@
   background: #faf7fd;
   color: #5e34b1;
 }
+
+.nav-item:disabled {
+  cursor: default;
+  opacity: 0.48;
+}
+
+.nav-item:disabled:hover {
+  background: transparent;
+  color: #656873;
+  transform: none;
+}
+
+/* Tela completa de transações */
+
+.transactions-view {
+  width: 100%;
+}
+
+.transactions-view-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.transactions-view-header h1 {
+  margin: 0;
+  font-size: 31px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: #111522;
+}
+
+.transactions-view-header p {
+  margin: 9px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #656873;
+}
+
+.transactions-total {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid #e8e4dd;
+  border-radius: 9px;
+  background: white;
+  color: #5f606a;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.035);
+}
+
+.transactions-total svg {
+  color: #6d3fc6;
+}
+
+.transactions-full-card {
+  min-height: 0;
+   padding: 8px 0 0;
+  overflow: hidden;
+}
+
+.transactions-full-card .transactions-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.transactions-full-table {
+  width: 100%;
+}
+
+.transactions-full-table th,
+.transactions-full-table td {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+.transactions-state {
+  padding: 60px 24px;
+  text-align: center;
+  font-size: 13px;
+  color: #777985;
+}
+
+.transactions-state.error {
+  color: #d9554e;
+}
+
+.transactions-pagination {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 22px;
+  border-top: 1px solid #ece9e2;
+  background: #fff;
+}
+
+.transactions-pagination > span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #656873;
+}
+
+.pagination-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-actions button {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 12px;
+  border: 1px solid #e4ded6;
+  border-radius: 8px;
+  background: white;
+  color: #40414b;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.pagination-actions button:hover:not(:disabled) {
+  border-color: #d4c8e8;
+  background: #faf7fd;
+  color: #6d3fc6;
+}
+
+.pagination-actions button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+@media (max-width: 760px) {
+  .transactions-view-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .transactions-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

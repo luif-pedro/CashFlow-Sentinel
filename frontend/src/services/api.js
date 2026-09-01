@@ -10,18 +10,22 @@ export async function buscarDadosDashboard(
   )
 
   const respostaTransacoes = await fetch(
-    `${API_URL}/transacoes`
+    `${API_URL}/transacoes?pagina=1&limite=4`
   )
 
 
-  if (!respostaFluxo.ok || !respostaTransacoes.ok) {
+  if (
+    !respostaFluxo.ok ||
+    !respostaTransacoes.ok
+  ) {
     throw new Error(
       'Não foi possível carregar os dados do dashboard.'
     )
   }
 
 
-  const dadosFluxo = await respostaFluxo.json()
+  const dadosFluxo =
+    await respostaFluxo.json()
 
   const dadosTransacoes =
     await respostaTransacoes.json()
@@ -31,9 +35,52 @@ export async function buscarDadosDashboard(
     fluxo: dadosFluxo,
 
     transacoes:
-      Array.isArray(dadosTransacoes.transacoes)
+      Array.isArray(
+        dadosTransacoes.transacoes
+      )
         ? dadosTransacoes.transacoes
         : [],
+  }
+}
+
+
+export async function buscarTransacoes(
+  pagina = 1,
+  limite = 50
+) {
+  const resposta = await fetch(
+    `${API_URL}/transacoes?pagina=${pagina}&limite=${limite}`
+  )
+
+
+  if (!resposta.ok) {
+    throw new Error(
+      'Não foi possível carregar as transações.'
+    )
+  }
+
+
+  const dados =
+    await resposta.json()
+
+
+  return {
+    transacoes:
+      Array.isArray(dados.transacoes)
+        ? dados.transacoes
+        : [],
+
+    total:
+      dados.total ?? 0,
+
+    pagina:
+      dados.pagina ?? pagina,
+
+    limite:
+      dados.limite ?? limite,
+
+    totalPaginas:
+      dados.total_paginas ?? 0,
   }
 }
 
@@ -78,7 +125,9 @@ export async function enviarArquivoCsv(arquivo) {
     }
 
 
-    throw new Error(mensagemErro)
+    throw new Error(
+      mensagemErro
+    )
   }
 
 

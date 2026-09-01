@@ -6,6 +6,7 @@ import KpiGrid from './components/KpiGrid'
 import CashFlowChart from './components/CashFlowChart'
 import MonitoringPanel from './components/MonitoringPanel'
 import TransactionsTable from './components/TransactionsTable'
+import TransactionsView from './components/TransactionsView'
 import CsvImporter from './components/CsvImporter'
 
 import { buscarDadosDashboard } from './services/api'
@@ -23,6 +24,12 @@ function App() {
 
   const [dataFim, setDataFim] =
     useState('2026-08-25')
+
+  const [telaAtiva, setTelaAtiva] =
+    useState('visao-geral')
+
+  const [itemAtivo, setItemAtivo] =
+    useState('visao-geral')
 
 
   const carregarDados = useCallback(async () => {
@@ -56,43 +63,100 @@ function App() {
   }
 
 
+  function navegar(secao) {
+    if (secao === 'transacoes') {
+      setTelaAtiva('transacoes')
+      setItemAtivo('transacoes')
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+
+      return
+    }
+
+
+    if (secao === 'importar-dados') {
+      setTelaAtiva('visao-geral')
+      setItemAtivo('importar-dados')
+
+      setTimeout(() => {
+        const elemento =
+          document.getElementById(
+            'importar-dados'
+          )
+
+        elemento?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 0)
+
+      return
+    }
+
+
+    setTelaAtiva('visao-geral')
+    setItemAtivo('visao-geral')
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
+
   return (
     <div className="app-shell">
-      <Sidebar />
+      <Sidebar
+        itemAtivo={itemAtivo}
+        onNavegar={navegar}
+      />
 
       <main className="main-content">
-        <Header
-          dataInicio={dataInicio}
-          dataFim={dataFim}
-          onAplicarPeriodo={aplicarPeriodo}
-        />
+        {telaAtiva === 'transacoes' ? (
+          <TransactionsView />
+        ) : (
+          <div id="visao-geral">
+            <Header
+              dataInicio={dataInicio}
+              dataFim={dataFim}
+              onAplicarPeriodo={aplicarPeriodo}
+            />
 
-        <KpiGrid
-          fluxo={fluxo}
-          erroDados={erroDados}
-        />
-
-        <section className="dashboard-columns">
-          <div className="dashboard-column">
-            <CashFlowChart
+            <KpiGrid
               fluxo={fluxo}
+              erroDados={erroDados}
             />
 
-            <TransactionsTable
-              transacoes={transacoes}
-            />
+            <section className="dashboard-columns">
+              <div className="dashboard-column">
+                <CashFlowChart
+                  fluxo={fluxo}
+                />
+
+                <TransactionsTable
+                  transacoes={transacoes}
+                />
+              </div>
+
+              <div className="dashboard-column">
+                <MonitoringPanel
+                  fluxo={fluxo}
+                />
+
+                <div id="importar-dados">
+                  <CsvImporter
+                    onImportacaoConcluida={
+                      carregarDados
+                    }
+                  />
+                </div>
+              </div>
+            </section>
           </div>
-
-          <div className="dashboard-column">
-            <MonitoringPanel
-              fluxo={fluxo}
-            />
-
-            <CsvImporter
-              onImportacaoConcluida={carregarDados}
-            />
-          </div>
-        </section>
+        )}
       </main>
     </div>
   )

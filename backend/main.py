@@ -1,10 +1,19 @@
 from datetime import date
 
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import (
+    FastAPI,
+    UploadFile,
+    File,
+    HTTPException,
+    Query,
+)
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.database import conectar
-from backend.services import calcular_fluxo_caixa, fluxo_caixa_diario
+from backend.services import (
+    calcular_fluxo_caixa,
+    fluxo_caixa_diario,
+)
 from backend.alertas import verificar_alertas
 from data.importador import importar_transacoes
 
@@ -26,23 +35,62 @@ app.add_middleware(
 
 @app.get("/")
 def inicio():
-    return {"mensagem": "CashFlow API funcionando!"}
+    return {
+        "mensagem": "CashFlow API funcionando!"
+    }
 
 
 @app.get("/transacoes")
-def listar_transacoes():
+def listar_transacoes(
+    pagina: int = Query(
+        default=1,
+        ge=1
+    ),
+    limite: int = Query(
+        default=50,
+        ge=1,
+        le=100
+    )
+):
     conn = conectar()
     cursor = conn.cursor()
 
     try:
         cursor.execute(
             """
-            SELECT id, data, descricao, tipo, valor
+            SELECT COUNT(*)
             FROM transacoes
             WHERE empresa_id = %s
-            ORDER BY id
             """,
             (1,)
+        )
+
+        total = cursor.fetchone()[0]
+
+        offset = (
+            pagina - 1
+        ) * limite
+
+
+        cursor.execute(
+            """
+            SELECT
+                id,
+                data,
+                descricao,
+                tipo,
+                valor
+            FROM transacoes
+            WHERE empresa_id = %s
+            ORDER BY data DESC, id DESC
+            LIMIT %s
+            OFFSET %s
+            """,
+            (
+                1,
+                limite,
+                offset
+            )
         )
 
         resultados = cursor.fetchall()
@@ -58,9 +106,26 @@ def listar_transacoes():
                 "valor": float(linha[4])
             }
 
-            transacoes.append(transacao)
+            transacoes.append(
+                transacao
+            )
 
-        return {"transacoes": transacoes}
+
+        if total == 0:
+            total_paginas = 0
+        else:
+            total_paginas = (
+                total + limite - 1
+            ) // limite
+
+
+        return {
+            "transacoes": transacoes,
+            "total": total,
+            "pagina": pagina,
+            "limite": limite,
+            "total_paginas": total_paginas
+        }
 
     finally:
         cursor.close()
@@ -68,7 +133,9 @@ def listar_transacoes():
 
 
 @app.post("/importar")
-def importar_csv(arquivo: UploadFile = File(...)):
+def importar_csv(
+    arquivo: UploadFile = File(...)
+):
     try:
         resultado = importar_transacoes(
             arquivo.file,
@@ -86,7 +153,10 @@ def importar_csv(arquivo: UploadFile = File(...)):
     except Exception:
         raise HTTPException(
             status_code=500,
-            detail="Erro interno ao importar transações."
+            detail=(
+                "Erro interno ao importar "
+                "transações."
+            )
         )
 
 
@@ -98,7 +168,10 @@ def fluxo_caixa(
     if data_inicio > data_fim:
         raise HTTPException(
             status_code=400,
-            detail="A data inicial não pode ser posterior à data final."
+            detail=(
+                "A data inicial não pode ser "
+                "posterior à data final."
+            )
         )
 
     resultado = calcular_fluxo_caixa(
@@ -113,25 +186,50 @@ def fluxo_caixa(
         data_fim=data_fim
     )
 
-    alertas = verificar_alertas(resultado, diario)
+    alertas = verificar_alertas(
+        resultado,
+        diario
+    )
 
     return {
-        "entradas": float(resultado["entradas"]),
-        "saidas": float(resultado["saidas"]),
-        "saldo": float(resultado["saldo"]),
+        "entradas": float(
+            resultado["entradas"]
+        ),
+        "saidas": float(
+            resultado["saidas"]
+        ),
+        "saldo": float(
+            resultado["saldo"]
+        ),
         "cobertura": (
-            float(resultado["cobertura"])
-            if resultado["cobertura"] is not None
+            float(
+                resultado["cobertura"]
+            )
+            if resultado["cobertura"]
+            is not None
             else None
         ),
         "alertas": alertas,
         "diario": [
             {
-                "data": item["data"].isoformat(),
-                "entradas": float(item["entradas"]),
-                "saidas": float(item["saidas"]),
-                "saldo": float(item["saldo"]),
-                "saldo_acumulado": float(item["saldo_acumulado"])
+                "data": (
+                    item["data"]
+                    .isoformat()
+                ),
+                "entradas": float(
+                    item["entradas"]
+                ),
+                "saidas": float(
+                    item["saidas"]
+                ),
+                "saldo": float(
+                    item["saldo"]
+                ),
+                "saldo_acumulado": float(
+                    item[
+                        "saldo_acumulado"
+                    ]
+                )
             }
             for item in diario
         ]
