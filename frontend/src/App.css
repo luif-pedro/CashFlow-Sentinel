@@ -261,11 +261,21 @@
 
 /* Linhas do dashboard */
 
-.dashboard-row {
+.dashboard-columns {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(330px, 0.82fr);
+  grid-template-columns:
+    minmax(0, 1.18fr)
+    minmax(330px, 0.82fr);
   gap: 18px;
+  align-items: start;
   margin-bottom: 18px;
+}
+
+.dashboard-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .dashboard-card {
@@ -647,7 +657,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .dashboard-row {
+  .dashboard-columns {
     grid-template-columns: 1fr;
   }
 
@@ -786,4 +796,29 @@
 
 .event-message strong {
   color: #6d3fc6;
+}
+
+.monitor-toggle {
+  width: 100%;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 0;
+  border-top: 1px solid #f0ede7;
+  background: transparent;
+  color: #6d3fc6;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.monitor-toggle:hover {
+  background: #faf7fd;
+  color: #5e34b1;
 }

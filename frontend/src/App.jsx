@@ -72,22 +72,26 @@ function App() {
           erroDados={erroDados}
         />
 
-        <section className="dashboard-row">
-          <CashFlowChart fluxo={fluxo} />
+        <section className="dashboard-columns">
+          <div className="dashboard-column">
+            <CashFlowChart
+              fluxo={fluxo}
+            />
 
-          <MonitoringPanel
-            fluxo={fluxo}
-          />
-        </section>
+            <TransactionsTable
+              transacoes={transacoes}
+            />
+          </div>
 
-        <section className="dashboard-row bottom-row">
-          <TransactionsTable
-            transacoes={transacoes}
-          />
+          <div className="dashboard-column">
+            <MonitoringPanel
+              fluxo={fluxo}
+            />
 
-          <CsvImporter
-            onImportacaoConcluida={carregarDados}
-          />
+            <CsvImporter
+              onImportacaoConcluida={carregarDados}
+            />
+          </div>
         </section>
       </main>
     </div>

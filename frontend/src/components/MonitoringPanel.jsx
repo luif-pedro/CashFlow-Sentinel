@@ -1,14 +1,21 @@
+import { useState } from 'react'
+
 import {
   ShieldCheck,
   CheckCircle2,
   AlertTriangle,
   Activity,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react'
 
 import { formatarMoeda } from '../utils/formatters'
 
 
 function MonitoringPanel({ fluxo }) {
+  const [mostrarTodosPicos, setMostrarTodosPicos] =
+    useState(false)
+
   const carregando = !fluxo
 
   const alertas =
@@ -28,6 +35,12 @@ function MonitoringPanel({ fluxo }) {
       (alerta) =>
         alerta.tipo === 'despesa_acima_da_media'
     )
+
+
+  const picosVisiveis =
+    mostrarTodosPicos
+      ? picosSaida
+      : []
 
 
   const temAlertasCriticos =
@@ -260,7 +273,7 @@ function MonitoringPanel({ fluxo }) {
         )}
 
 
-        {picosSaida.map(
+        {picosVisiveis.map(
           (alerta, index) => (
             <div
               className="monitor-item event-message"
@@ -281,6 +294,31 @@ function MonitoringPanel({ fluxo }) {
               </div>
             </div>
           )
+        )}
+
+
+        {temPicos && (
+          <button
+            type="button"
+            className="monitor-toggle"
+            onClick={() =>
+              setMostrarTodosPicos(
+                (valorAtual) => !valorAtual
+              )
+            }
+          >
+            {mostrarTodosPicos ? (
+              <>
+                <ChevronUp size={16} />
+                Ocultar detalhes
+              </>
+            ) : (
+              <>
+                <ChevronDown size={16} />
+                Ver detalhes dos {picosSaida.length} picos
+              </>
+            )}
+          </button>
         )}
       </div>
     </article>
