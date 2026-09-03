@@ -10,8 +10,8 @@ export async function buscarDadosDashboard(
   )
 
   const respostaTransacoes = await fetch(
-    `${API_URL}/transacoes?pagina=1&limite=4`
-  )
+  `${API_URL}/transacoes?pagina=1&limite=4&data_inicio=${dataInicio}&data_fim=${dataFim}`
+)
 
 
   if (

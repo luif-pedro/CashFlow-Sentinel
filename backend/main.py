@@ -50,8 +50,23 @@ def listar_transacoes(
         default=50,
         ge=1,
         le=100
-    )
+    ),
+    data_inicio: date | None = None,
+    data_fim: date | None = None
 ):
+    if (
+        data_inicio is not None
+        and data_fim is not None
+        and data_inicio > data_fim
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "A data inicial não pode ser "
+                "posterior à data final."
+            )
+        )
+
     conn = conectar()
     cursor = conn.cursor()
 
@@ -61,8 +76,16 @@ def listar_transacoes(
             SELECT COUNT(*)
             FROM transacoes
             WHERE empresa_id = %s
+              AND (%s IS NULL OR data >= %s)
+              AND (%s IS NULL OR data <= %s)
             """,
-            (1,)
+            (
+                1,
+                data_inicio,
+                data_inicio,
+                data_fim,
+                data_fim,
+            )
         )
 
         total = cursor.fetchone()[0]
@@ -82,14 +105,20 @@ def listar_transacoes(
                 valor
             FROM transacoes
             WHERE empresa_id = %s
+              AND (%s IS NULL OR data >= %s)
+              AND (%s IS NULL OR data <= %s)
             ORDER BY data DESC, id DESC
             LIMIT %s
             OFFSET %s
             """,
             (
                 1,
+                data_inicio,
+                data_inicio,
+                data_fim,
+                data_fim,
                 limite,
-                offset
+                offset,
             )
         )
 
