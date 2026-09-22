@@ -4,8 +4,8 @@ import { CalendarDays } from 'lucide-react'
 
 
 function Header({
-  dataInicio = '2026-08-24',
-  dataFim = '2026-08-25',
+  dataInicio = '2025-12-01',
+  dataFim = '2025-12-31',
   onAplicarPeriodo,
 }) {
   const [painelAberto, setPainelAberto] =

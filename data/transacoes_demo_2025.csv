@@ -1,0 +1,535 @@
+data,descricao,tipo,valor
+2025-01-01,Manutenção - Cliente Horizonte,entrada,1277.44
+2025-01-02,Manutenção - Cliente Prisma,entrada,1003.59
+2025-01-02,Material de escritório,saida,157.88
+2025-01-03,Compra de insumos,saida,571.22
+2025-01-03,Marketing digital,saida,648.76
+2025-01-06,Aluguel,saida,2839.82
+2025-01-06,Consultoria - Cliente Aurora,entrada,1715.29
+2025-01-06,Folha de pagamento,saida,5997.56
+2025-01-07,Contabilidade,saida,678.21
+2025-01-07,Hospedagem e infraestrutura,saida,142.86
+2025-01-07,Material de escritório,saida,372.77
+2025-01-08,Frete e entregas,saida,216.34
+2025-01-08,Transporte,saida,174.01
+2025-01-10,Internet,saida,222.04
+2025-01-10,Treinamento,saida,331.68
+2025-01-13,Consultoria - Cliente Vertex,entrada,2404.81
+2025-01-13,Software e ferramentas,saida,491.78
+2025-01-15,Consultoria - Cliente Atlas,entrada,3110.61
+2025-01-15,Consultoria - Cliente Aurora,entrada,1698.83
+2025-01-15,Energia elétrica,saida,397.11
+2025-01-15,Frete e entregas,saida,96.61
+2025-01-16,Compra de insumos,saida,320.79
+2025-01-16,Projeto - Cliente Horizonte,entrada,3428.25
+2025-01-17,Manutenção - Cliente Solaris,entrada,956.91
+2025-01-20,Impostos sobre faturamento,saida,1170.91
+2025-01-20,Manutenção de equipamento,saida,702.67
+2025-01-20,Marketing digital,saida,908.71
+2025-01-20,Pró-labore,saida,2436.82
+2025-01-20,Telefonia,saida,170.92
+2025-01-21,Transporte,saida,123.63
+2025-01-22,Compra de insumos,saida,373.26
+2025-01-24,Serviço terceirizado,saida,1430.23
+2025-01-27,Serviço terceirizado,saida,1674.05
+2025-01-28,Consultoria - Cliente Horizonte,entrada,1648.23
+2025-01-29,Hospedagem e infraestrutura,saida,246.96
+2025-01-29,Manutenção - Cliente Atlas,entrada,1172.19
+2025-01-29,Manutenção - Cliente Horizonte,entrada,1099.05
+2025-01-29,Taxas bancárias,saida,162.13
+2025-01-31,Serviço terceirizado,saida,1321.75
+2025-02-03,Manutenção - Cliente Atlas,entrada,1281.02
+2025-02-03,Manutenção - Cliente Aurora,entrada,1839.23
+2025-02-04,Consultoria - Cliente Atlas,entrada,1481.96
+2025-02-04,Serviço terceirizado,saida,1603.74
+2025-02-05,Aluguel,saida,2920.84
+2025-02-05,Folha de pagamento,saida,5926.44
+2025-02-05,Manutenção - Cliente Orion,entrada,827.43
+2025-02-05,Projeto - Cliente Horizonte,entrada,4080.75
+2025-02-05,Transporte,saida,227.30
+2025-02-06,Material de escritório,saida,308.94
+2025-02-07,Contabilidade,saida,616.53
+2025-02-10,Consultoria - Cliente Orion,entrada,1598.42
+2025-02-10,Internet,saida,213.08
+2025-02-10,Projeto - Cliente Prisma,entrada,2799.38
+2025-02-11,Consultoria - Cliente Vertex,entrada,3247.33
+2025-02-11,Transporte,saida,94.70
+2025-02-12,Manutenção - Cliente Solaris,entrada,1350.33
+2025-02-12,Marketing digital,saida,436.26
+2025-02-12,Material de escritório,saida,409.46
+2025-02-12,Software e ferramentas,saida,489.73
+2025-02-13,Implementação - Cliente Horizonte,entrada,3598.47
+2025-02-13,Projeto - Cliente Solaris,entrada,5140.16
+2025-02-14,Hospedagem e infraestrutura,saida,148.11
+2025-02-14,Manutenção - Cliente Nexus,entrada,2386.64
+2025-02-14,Serviço mensal - Cliente Horizonte,entrada,1873.15
+2025-02-17,Energia elétrica,saida,405.60
+2025-02-17,Frete e entregas,saida,59.33
+2025-02-17,Material de escritório,saida,216.89
+2025-02-18,Suporte técnico - Cliente Aurora,entrada,1539.30
+2025-02-18,Telefonia,saida,181.53
+2025-02-19,Marketing digital,saida,528.66
+2025-02-20,Frete e entregas,saida,150.42
+2025-02-20,Impostos sobre faturamento,saida,2596.03
+2025-02-20,Pró-labore,saida,2630.65
+2025-02-20,Serviço terceirizado,saida,1487.70
+2025-02-20,Serviço terceirizado,saida,486.77
+2025-02-21,Compra de insumos,saida,594.76
+2025-02-21,Manutenção de equipamento,saida,842.68
+2025-02-24,Marketing digital,saida,553.90
+2025-02-24,Material de escritório,saida,97.05
+2025-02-25,Frete e entregas,saida,261.06
+2025-02-25,Marketing digital,saida,232.33
+2025-02-26,Consultoria - Cliente Nexus,entrada,3040.50
+2025-02-26,Manutenção de equipamento,saida,449.95
+2025-02-26,Transporte,saida,137.49
+2025-02-26,Transporte,saida,51.13
+2025-02-27,Projeto - Cliente Orion,entrada,2522.93
+2025-02-27,Projeto - Cliente Orion,entrada,2746.30
+2025-02-27,Serviço terceirizado,saida,1754.63
+2025-02-28,Serviço mensal - Cliente Nexus,entrada,1913.94
+2025-03-05,Aluguel,saida,2873.12
+2025-03-05,Consultoria - Cliente Aurora,entrada,3227.71
+2025-03-05,Folha de pagamento,saida,6501.57
+2025-03-05,Suporte técnico - Cliente Aurora,entrada,856.37
+2025-03-05,Taxas bancárias,saida,75.88
+2025-03-06,Consultoria - Cliente Horizonte,entrada,1728.82
+2025-03-06,Manutenção de equipamento,saida,244.17
+2025-03-06,Taxas bancárias,saida,111.94
+2025-03-07,Contabilidade,saida,626.88
+2025-03-07,Transporte,saida,247.91
+2025-03-10,Internet,saida,223.54
+2025-03-10,Marketing digital,saida,1078.11
+2025-03-11,Material de escritório,saida,385.63
+2025-03-11,Serviço mensal - Cliente Nexus,entrada,1666.05
+2025-03-11,Serviço terceirizado,saida,384.31
+2025-03-12,Compra de insumos,saida,470.45
+2025-03-12,Software e ferramentas,saida,466.41
+2025-03-12,Taxas bancárias,saida,149.35
+2025-03-12,Treinamento,saida,517.22
+2025-03-13,Marketing digital,saida,766.14
+2025-03-14,Implementação - Cliente Atlas,entrada,4552.56
+2025-03-17,Energia elétrica,saida,419.42
+2025-03-17,Manutenção de equipamento,saida,154.39
+2025-03-17,Serviço mensal - Cliente Prisma,entrada,1104.12
+2025-03-17,Taxas bancárias,saida,28.84
+2025-03-18,Frete e entregas,saida,53.47
+2025-03-18,Marketing digital,saida,218.48
+2025-03-18,Serviço terceirizado,saida,1317.05
+2025-03-18,Telefonia,saida,171.19
+2025-03-20,Frete e entregas,saida,252.77
+2025-03-20,Impostos sobre faturamento,saida,1886.83
+2025-03-20,Pró-labore,saida,2603.83
+2025-03-20,Treinamento,saida,412.84
+2025-03-21,Serviço mensal - Cliente Orion,entrada,1136.68
+2025-03-21,Serviço terceirizado,saida,639.38
+2025-03-24,Taxas bancárias,saida,160.19
+2025-03-25,Manutenção de equipamento,saida,393.89
+2025-03-25,Projeto - Cliente Horizonte,entrada,3905.12
+2025-03-26,Marketing digital,saida,861.93
+2025-03-27,Projeto - Cliente Vertex,entrada,5831.33
+2025-03-27,Suporte técnico - Cliente Atlas,entrada,1409.37
+2025-03-27,Suporte técnico - Cliente Horizonte,entrada,1205.90
+2025-03-28,Manutenção - Cliente Orion,entrada,1370.94
+2025-03-31,Manutenção - Cliente Aurora,entrada,2186.59
+2025-03-31,Serviço mensal - Cliente Orion,entrada,1265.54
+2025-04-01,Projeto - Cliente Aurora,entrada,5017.49
+2025-04-03,Treinamento,saida,570.36
+2025-04-04,Manutenção - Cliente Prisma,entrada,1173.56
+2025-04-04,Material de escritório,saida,383.50
+2025-04-07,Aluguel,saida,2840.07
+2025-04-07,Contabilidade,saida,618.28
+2025-04-07,Folha de pagamento,saida,6428.08
+2025-04-07,Frete e entregas,saida,63.94
+2025-04-07,Hospedagem e infraestrutura,saida,255.85
+2025-04-07,Serviço terceirizado,saida,905.40
+2025-04-08,Manutenção - Cliente Orion,entrada,1325.26
+2025-04-09,Suporte técnico - Cliente Horizonte,entrada,1613.77
+2025-04-10,Hospedagem e infraestrutura,saida,102.10
+2025-04-10,Hospedagem e infraestrutura,saida,194.04
+2025-04-10,Internet,saida,231.93
+2025-04-11,Hospedagem e infraestrutura,saida,355.77
+2025-04-11,Manutenção - Cliente Nexus,entrada,2928.88
+2025-04-11,Projeto - Cliente Atlas,entrada,6390.09
+2025-04-14,Hospedagem e infraestrutura,saida,114.09
+2025-04-14,Software e ferramentas,saida,464.73
+2025-04-15,Energia elétrica,saida,410.45
+2025-04-15,Serviço terceirizado,saida,743.99
+2025-04-16,Projeto - Cliente Atlas,entrada,5356.63
+2025-04-17,Consultoria - Cliente Nexus,entrada,2919.36
+2025-04-17,Manutenção - Cliente Nexus,entrada,2140.99
+2025-04-17,Treinamento,saida,223.05
+2025-04-18,Compra de insumos,saida,719.74
+2025-04-18,Manutenção - Cliente Aurora,entrada,1296.54
+2025-04-18,Material de escritório,saida,150.32
+2025-04-18,Serviço mensal - Cliente Atlas,entrada,1675.25
+2025-04-18,Serviço terceirizado,saida,443.13
+2025-04-18,Telefonia,saida,170.20
+2025-04-21,Compra de insumos,saida,1147.54
+2025-04-21,Impostos sobre faturamento,saida,2305.37
+2025-04-21,Pró-labore,saida,2394.21
+2025-04-21,Transporte,saida,140.42
+2025-04-22,Hospedagem e infraestrutura,saida,474.77
+2025-04-23,Manutenção de equipamento,saida,717.33
+2025-04-23,Suporte técnico - Cliente Prisma,entrada,1181.45
+2025-04-23,Taxas bancárias,saida,58.92
+2025-04-23,Treinamento,saida,551.95
+2025-04-24,Suporte técnico - Cliente Prisma,entrada,1289.23
+2025-04-24,Taxas bancárias,saida,153.74
+2025-04-28,Frete e entregas,saida,277.15
+2025-04-29,Hospedagem e infraestrutura,saida,262.35
+2025-04-29,Serviço mensal - Cliente Horizonte,entrada,1706.89
+2025-04-30,Serviço mensal - Cliente Orion,entrada,1420.80
+2025-04-30,Suporte técnico - Cliente Prisma,entrada,986.71
+2025-05-01,Manutenção de equipamento,saida,204.32
+2025-05-05,Aluguel,saida,2649.50
+2025-05-05,Folha de pagamento,saida,5857.95
+2025-05-07,Contabilidade,saida,685.25
+2025-05-07,Projeto - Cliente Atlas,entrada,5220.56
+2025-05-07,Treinamento,saida,200.76
+2025-05-08,Transporte,saida,211.11
+2025-05-09,Taxas bancárias,saida,170.93
+2025-05-12,Internet,saida,212.72
+2025-05-12,Software e ferramentas,saida,455.15
+2025-05-13,Licença anual de software,saida,6844.63
+2025-05-13,Serviço terceirizado,saida,1024.30
+2025-05-14,Serviço terceirizado,saida,497.76
+2025-05-15,Consultoria - Cliente Prisma,entrada,2052.12
+2025-05-15,Energia elétrica,saida,443.05
+2025-05-16,Hospedagem e infraestrutura,saida,126.44
+2025-05-16,Suporte técnico - Cliente Vertex,entrada,543.13
+2025-05-19,Consultoria - Cliente Solaris,entrada,1476.13
+2025-05-19,Manutenção - Cliente Nexus,entrada,1956.19
+2025-05-19,Manutenção de equipamento,saida,569.12
+2025-05-19,Telefonia,saida,174.54
+2025-05-20,Compra de insumos,saida,163.28
+2025-05-20,Hospedagem e infraestrutura,saida,391.22
+2025-05-20,Impostos sobre faturamento,saida,1575.72
+2025-05-20,Material de escritório,saida,198.05
+2025-05-20,Pró-labore,saida,2359.31
+2025-05-20,Serviço mensal - Cliente Vertex,entrada,2232.54
+2025-05-20,Suporte técnico - Cliente Aurora,entrada,1547.33
+2025-05-20,Suporte técnico - Cliente Orion,entrada,645.30
+2025-05-21,Implementação - Cliente Vertex,entrada,2611.24
+2025-05-26,Projeto - Cliente Aurora,entrada,4017.70
+2025-05-27,Hospedagem e infraestrutura,saida,374.56
+2025-05-27,Treinamento,saida,546.93
+2025-05-28,Compra de insumos,saida,326.18
+2025-05-29,Compra de insumos,saida,222.40
+2025-05-29,Transporte,saida,170.26
+2025-05-30,Projeto - Cliente Solaris,entrada,3959.74
+2025-06-02,Hospedagem e infraestrutura,saida,125.14
+2025-06-03,Hospedagem e infraestrutura,saida,229.91
+2025-06-04,Manutenção - Cliente Atlas,entrada,2412.45
+2025-06-04,Serviço mensal - Cliente Aurora,entrada,2077.03
+2025-06-04,Serviço terceirizado,saida,733.74
+2025-06-05,Aluguel,saida,2708.43
+2025-06-05,Folha de pagamento,saida,6552.88
+2025-06-05,Implementação - Cliente Horizonte,entrada,2223.82
+2025-06-09,Contabilidade,saida,625.00
+2025-06-10,Internet,saida,207.17
+2025-06-10,Transporte,saida,248.47
+2025-06-11,Manutenção de equipamento,saida,186.44
+2025-06-11,Projeto - Cliente Solaris,entrada,2890.72
+2025-06-11,Serviço mensal - Cliente Solaris,entrada,1410.96
+2025-06-12,Serviço mensal - Cliente Prisma,entrada,1903.96
+2025-06-12,Software e ferramentas,saida,481.97
+2025-06-12,Suporte técnico - Cliente Nexus,entrada,897.59
+2025-06-13,Hospedagem e infraestrutura,saida,479.74
+2025-06-13,Projeto - Cliente Aurora,entrada,4895.89
+2025-06-13,Treinamento,saida,644.72
+2025-06-16,Energia elétrica,saida,408.63
+2025-06-16,Serviço mensal - Cliente Vertex,entrada,1066.89
+2025-06-17,Implementação - Cliente Vertex,entrada,3552.40
+2025-06-17,Suporte técnico - Cliente Prisma,entrada,1011.85
+2025-06-18,Serviço terceirizado,saida,1474.76
+2025-06-18,Telefonia,saida,184.26
+2025-06-18,Transporte,saida,220.87
+2025-06-19,Transporte,saida,162.78
+2025-06-19,Transporte,saida,74.44
+2025-06-20,Impostos sobre faturamento,saida,2388.10
+2025-06-20,Pró-labore,saida,2516.01
+2025-06-20,Suporte técnico - Cliente Aurora,entrada,755.84
+2025-06-23,Consultoria - Cliente Nexus,entrada,2111.93
+2025-06-23,Implementação - Cliente Orion,entrada,2588.21
+2025-06-23,Manutenção de equipamento,saida,854.03
+2025-06-23,Treinamento,saida,270.70
+2025-06-24,Implementação - Cliente Aurora,entrada,3326.81
+2025-06-25,Implementação - Cliente Orion,entrada,2441.15
+2025-06-25,Marketing digital,saida,400.68
+2025-06-26,Implementação - Cliente Vertex,entrada,2713.51
+2025-06-26,Material de escritório,saida,131.59
+2025-06-26,Suporte técnico - Cliente Solaris,entrada,1520.68
+2025-06-27,Treinamento,saida,435.95
+2025-06-27,Treinamento,saida,449.14
+2025-06-30,Hospedagem e infraestrutura,saida,112.60
+2025-07-01,Frete e entregas,saida,238.86
+2025-07-01,Marketing digital,saida,465.89
+2025-07-02,Frete e entregas,saida,153.56
+2025-07-02,Hospedagem e infraestrutura,saida,355.18
+2025-07-02,Suporte técnico - Cliente Solaris,entrada,585.66
+2025-07-03,Implementação - Cliente Vertex,entrada,4245.83
+2025-07-03,Serviço mensal - Cliente Nexus,entrada,2537.74
+2025-07-04,Transporte,saida,141.52
+2025-07-07,Aluguel,saida,2857.16
+2025-07-07,Contabilidade,saida,677.90
+2025-07-07,Folha de pagamento,saida,6531.22
+2025-07-07,Frete e entregas,saida,220.38
+2025-07-07,Serviço terceirizado,saida,1012.34
+2025-07-07,Serviço terceirizado,saida,737.23
+2025-07-10,Frete e entregas,saida,140.88
+2025-07-10,Internet,saida,215.51
+2025-07-10,Suporte técnico - Cliente Orion,entrada,508.62
+2025-07-11,Implementação - Cliente Aurora,entrada,2843.87
+2025-07-11,Implementação - Cliente Vertex,entrada,2910.60
+2025-07-11,Manutenção de equipamento,saida,516.92
+2025-07-11,Projeto - Cliente Solaris,entrada,4668.71
+2025-07-14,Consultoria - Cliente Atlas,entrada,2100.13
+2025-07-14,Manutenção de equipamento,saida,760.03
+2025-07-14,Software e ferramentas,saida,491.16
+2025-07-15,Energia elétrica,saida,409.33
+2025-07-15,Serviço mensal - Cliente Solaris,entrada,1544.68
+2025-07-15,Transporte,saida,109.19
+2025-07-17,Transporte,saida,253.44
+2025-07-18,Telefonia,saida,181.08
+2025-07-18,Transporte,saida,100.77
+2025-07-21,Impostos sobre faturamento,saida,2259.67
+2025-07-21,Pró-labore,saida,2594.07
+2025-07-22,Taxas bancárias,saida,154.38
+2025-07-23,Compra de insumos,saida,1130.96
+2025-07-25,Implementação - Cliente Atlas,entrada,4459.18
+2025-07-25,Manutenção de equipamento,saida,773.23
+2025-07-25,Serviço mensal - Cliente Solaris,entrada,1226.30
+2025-07-28,Consultoria - Cliente Atlas,entrada,3293.19
+2025-07-28,Serviço terceirizado,saida,1101.74
+2025-07-28,Taxas bancárias,saida,54.54
+2025-07-29,Consultoria - Cliente Atlas,entrada,2531.45
+2025-07-29,Hospedagem e infraestrutura,saida,133.43
+2025-07-30,Projeto - Cliente Atlas,entrada,3595.56
+2025-07-31,Manutenção de equipamento,saida,461.73
+2025-07-31,Marketing digital,saida,638.51
+2025-07-31,Suporte técnico - Cliente Aurora,entrada,609.70
+2025-07-31,Treinamento,saida,543.64
+2025-08-01,Hospedagem e infraestrutura,saida,192.34
+2025-08-01,Licença anual de software,saida,4281.13
+2025-08-01,Manutenção - Cliente Horizonte,entrada,1870.06
+2025-08-04,Material de escritório,saida,95.64
+2025-08-05,Aluguel,saida,2925.12
+2025-08-05,Folha de pagamento,saida,6570.08
+2025-08-07,Contabilidade,saida,613.80
+2025-08-07,Hospedagem e infraestrutura,saida,481.64
+2025-08-07,Suporte técnico - Cliente Nexus,entrada,1808.83
+2025-08-07,Suporte técnico - Cliente Nexus,entrada,1943.38
+2025-08-08,Treinamento,saida,481.35
+2025-08-11,Internet,saida,208.61
+2025-08-11,Suporte técnico - Cliente Vertex,entrada,1669.85
+2025-08-12,Software e ferramentas,saida,487.55
+2025-08-12,Taxas bancárias,saida,121.06
+2025-08-13,Serviço terceirizado,saida,1018.67
+2025-08-13,Suporte técnico - Cliente Horizonte,entrada,1277.33
+2025-08-14,Compra de insumos,saida,753.55
+2025-08-14,Manutenção de equipamento,saida,476.33
+2025-08-14,Transporte,saida,137.61
+2025-08-15,Energia elétrica,saida,441.21
+2025-08-15,Manutenção - Cliente Solaris,entrada,1442.48
+2025-08-18,Marketing digital,saida,247.95
+2025-08-18,Telefonia,saida,178.57
+2025-08-19,Serviço mensal - Cliente Atlas,entrada,2141.66
+2025-08-20,Impostos sobre faturamento,saida,1613.40
+2025-08-20,Manutenção - Cliente Orion,entrada,1047.47
+2025-08-20,Manutenção de equipamento,saida,399.60
+2025-08-20,Marketing digital,saida,404.66
+2025-08-20,Pró-labore,saida,2574.03
+2025-08-20,Treinamento,saida,278.55
+2025-08-21,Projeto - Cliente Prisma,entrada,4349.40
+2025-08-22,Serviço mensal - Cliente Vertex,entrada,1880.46
+2025-08-22,Serviço terceirizado,saida,1799.09
+2025-08-26,Hospedagem e infraestrutura,saida,476.53
+2025-08-26,Serviço mensal - Cliente Horizonte,entrada,1901.71
+2025-08-27,Transporte,saida,92.19
+2025-08-28,Marketing digital,saida,341.06
+2025-08-29,Implementação - Cliente Vertex,entrada,4059.26
+2025-08-29,Manutenção - Cliente Prisma,entrada,1498.14
+2025-09-02,Marketing digital,saida,221.72
+2025-09-02,Serviço mensal - Cliente Atlas,entrada,2257.76
+2025-09-02,Treinamento,saida,634.68
+2025-09-04,Implementação - Cliente Aurora,entrada,3965.87
+2025-09-04,Manutenção de equipamento,saida,626.41
+2025-09-04,Manutenção de equipamento,saida,896.82
+2025-09-05,Aluguel,saida,2921.01
+2025-09-05,Compra de insumos,saida,405.75
+2025-09-05,Folha de pagamento,saida,6100.14
+2025-09-05,Frete e entregas,saida,143.49
+2025-09-08,Contabilidade,saida,667.49
+2025-09-09,Implementação - Cliente Prisma,entrada,2567.28
+2025-09-09,Material de escritório,saida,314.70
+2025-09-10,Compra de equipamento,saida,6158.74
+2025-09-10,Compra de insumos,saida,1111.02
+2025-09-10,Compra de insumos,saida,263.76
+2025-09-10,Hospedagem e infraestrutura,saida,275.67
+2025-09-10,Internet,saida,232.67
+2025-09-10,Projeto - Cliente Solaris,entrada,2991.85
+2025-09-10,Serviço mensal - Cliente Solaris,entrada,2043.52
+2025-09-11,Compra de insumos,saida,213.58
+2025-09-11,Treinamento,saida,336.30
+2025-09-12,Implementação - Cliente Prisma,entrada,1941.51
+2025-09-12,Software e ferramentas,saida,506.91
+2025-09-15,Energia elétrica,saida,435.35
+2025-09-16,Manutenção - Cliente Nexus,entrada,2456.45
+2025-09-16,Marketing digital,saida,537.55
+2025-09-18,Telefonia,saida,169.50
+2025-09-19,Serviço terceirizado,saida,1753.90
+2025-09-19,Transporte,saida,179.79
+2025-09-22,Consultoria - Cliente Aurora,entrada,1747.84
+2025-09-22,Impostos sobre faturamento,saida,1711.12
+2025-09-22,Pró-labore,saida,2587.20
+2025-09-22,Taxas bancárias,saida,126.51
+2025-09-24,Hospedagem e infraestrutura,saida,91.01
+2025-09-24,Transporte,saida,91.66
+2025-09-24,Treinamento,saida,228.76
+2025-09-26,Consultoria - Cliente Prisma,entrada,2269.94
+2025-09-29,Compra de insumos,saida,721.69
+2025-09-29,Implementação - Cliente Nexus,entrada,2591.76
+2025-09-29,Manutenção de equipamento,saida,575.96
+2025-09-29,Transporte,saida,185.81
+2025-09-30,Compra de insumos,saida,254.32
+2025-09-30,Implementação - Cliente Aurora,entrada,3684.85
+2025-09-30,Transporte,saida,140.05
+2025-10-01,Suporte técnico - Cliente Aurora,entrada,1128.65
+2025-10-02,Projeto - Cliente Prisma,entrada,2465.42
+2025-10-02,Taxas bancárias,saida,159.55
+2025-10-03,Hospedagem e infraestrutura,saida,109.54
+2025-10-06,Aluguel,saida,2654.07
+2025-10-06,Folha de pagamento,saida,6568.00
+2025-10-06,Implementação - Cliente Nexus,entrada,3332.21
+2025-10-06,Taxas bancárias,saida,89.48
+2025-10-07,Contabilidade,saida,632.45
+2025-10-07,Implementação - Cliente Horizonte,entrada,3495.95
+2025-10-07,Manutenção de equipamento,saida,411.95
+2025-10-07,Projeto - Cliente Horizonte,entrada,2975.48
+2025-10-07,Serviço mensal - Cliente Atlas,entrada,2199.08
+2025-10-08,Manutenção - Cliente Nexus,entrada,1246.08
+2025-10-09,Frete e entregas,saida,214.40
+2025-10-09,Transporte,saida,167.14
+2025-10-10,Internet,saida,223.51
+2025-10-10,Marketing digital,saida,784.20
+2025-10-10,Serviço mensal - Cliente Atlas,entrada,2102.05
+2025-10-10,Taxas bancárias,saida,94.99
+2025-10-13,Compra de insumos,saida,270.63
+2025-10-13,Manutenção de equipamento,saida,142.58
+2025-10-13,Software e ferramentas,saida,482.79
+2025-10-15,Energia elétrica,saida,411.19
+2025-10-16,Manutenção de equipamento,saida,588.32
+2025-10-16,Manutenção de equipamento,saida,838.80
+2025-10-16,Suporte técnico - Cliente Horizonte,entrada,870.07
+2025-10-16,Transporte,saida,135.01
+2025-10-17,Compra de equipamento,saida,5048.44
+2025-10-20,Impostos sobre faturamento,saida,1647.26
+2025-10-20,Pró-labore,saida,2509.17
+2025-10-20,Suporte técnico - Cliente Atlas,entrada,1553.80
+2025-10-20,Telefonia,saida,179.00
+2025-10-20,Treinamento,saida,239.86
+2025-10-21,Suporte técnico - Cliente Horizonte,entrada,1143.78
+2025-10-21,Taxas bancárias,saida,77.53
+2025-10-24,Transporte,saida,117.03
+2025-10-24,Treinamento,saida,477.74
+2025-10-27,Marketing digital,saida,691.86
+2025-10-28,Frete e entregas,saida,274.02
+2025-10-28,Suporte técnico - Cliente Horizonte,entrada,927.65
+2025-10-29,Transporte,saida,227.61
+2025-10-30,Compra de insumos,saida,598.10
+2025-10-30,Frete e entregas,saida,177.00
+2025-10-30,Implementação - Cliente Atlas,entrada,4014.06
+2025-10-30,Material de escritório,saida,287.06
+2025-10-30,Transporte,saida,130.38
+2025-10-31,Taxas bancárias,saida,40.37
+2025-11-03,Manutenção de equipamento,saida,209.84
+2025-11-04,Manutenção - Cliente Solaris,entrada,1494.15
+2025-11-04,Suporte técnico - Cliente Orion,entrada,1171.15
+2025-11-04,Transporte,saida,127.36
+2025-11-05,Aluguel,saida,2889.83
+2025-11-05,Folha de pagamento,saida,6148.41
+2025-11-05,Taxas bancárias,saida,27.90
+2025-11-06,Consultoria - Cliente Aurora,entrada,2359.97
+2025-11-06,Transporte,saida,136.08
+2025-11-06,Transporte,saida,152.31
+2025-11-07,Compra de insumos,saida,913.75
+2025-11-07,Contabilidade,saida,670.60
+2025-11-07,Serviço terceirizado,saida,601.57
+2025-11-10,Compra de insumos,saida,382.65
+2025-11-10,Internet,saida,214.44
+2025-11-11,Consultoria - Cliente Atlas,entrada,1805.56
+2025-11-12,Software e ferramentas,saida,458.11
+2025-11-13,Serviço terceirizado,saida,499.07
+2025-11-14,Frete e entregas,saida,63.48
+2025-11-17,Energia elétrica,saida,419.87
+2025-11-18,Frete e entregas,saida,164.84
+2025-11-18,Frete e entregas,saida,176.30
+2025-11-18,Hospedagem e infraestrutura,saida,446.09
+2025-11-18,Suporte técnico - Cliente Vertex,entrada,806.63
+2025-11-18,Telefonia,saida,180.70
+2025-11-19,Implementação - Cliente Horizonte,entrada,2542.52
+2025-11-19,Serviço terceirizado,saida,981.73
+2025-11-20,Impostos sobre faturamento,saida,1099.37
+2025-11-20,Pró-labore,saida,2388.76
+2025-11-20,Suporte técnico - Cliente Vertex,entrada,1099.87
+2025-11-20,Taxas bancárias,saida,134.97
+2025-11-21,Implementação - Cliente Atlas,entrada,1998.80
+2025-11-24,Transporte,saida,78.97
+2025-11-27,Compra de insumos,saida,754.55
+2025-11-27,Hospedagem e infraestrutura,saida,411.96
+2025-11-27,Implementação - Cliente Aurora,entrada,2245.57
+2025-11-27,Suporte técnico - Cliente Prisma,entrada,452.66
+2025-11-28,Compra de insumos,saida,330.47
+2025-11-28,Projeto - Cliente Horizonte,entrada,2346.00
+2025-12-01,Taxas bancárias,saida,103.82
+2025-12-02,Manutenção - Cliente Horizonte,entrada,1718.32
+2025-12-02,Manutenção - Cliente Solaris,entrada,1078.51
+2025-12-02,Marketing digital,saida,983.16
+2025-12-02,Suporte técnico - Cliente Vertex,entrada,1385.52
+2025-12-03,Implementação - Cliente Atlas,entrada,4347.30
+2025-12-03,Projeto - Cliente Aurora,entrada,4740.15
+2025-12-04,Marketing digital,saida,250.99
+2025-12-05,Aluguel,saida,2956.04
+2025-12-05,Folha de pagamento,saida,6510.06
+2025-12-05,Marketing digital,saida,729.47
+2025-12-05,Serviço terceirizado,saida,678.49
+2025-12-08,Contabilidade,saida,658.01
+2025-12-08,Treinamento,saida,548.79
+2025-12-09,Compra de insumos,saida,474.31
+2025-12-09,Hospedagem e infraestrutura,saida,477.75
+2025-12-10,Internet,saida,210.77
+2025-12-11,Implementação - Cliente Solaris,entrada,2990.71
+2025-12-12,Hospedagem e infraestrutura,saida,283.14
+2025-12-12,Serviço mensal - Cliente Atlas,entrada,2021.68
+2025-12-12,Serviço mensal - Cliente Nexus,entrada,1951.13
+2025-12-12,Serviço terceirizado,saida,1124.32
+2025-12-12,Software e ferramentas,saida,455.89
+2025-12-15,Energia elétrica,saida,428.25
+2025-12-15,Manutenção - Cliente Solaris,entrada,1908.65
+2025-12-15,Projeto - Cliente Solaris,entrada,5528.29
+2025-12-16,Hospedagem e infraestrutura,saida,99.22
+2025-12-16,Suporte técnico - Cliente Solaris,entrada,583.81
+2025-12-17,Projeto - Cliente Prisma,entrada,4019.84
+2025-12-17,Transporte,saida,108.11
+2025-12-18,Taxas bancárias,saida,102.95
+2025-12-18,Telefonia,saida,183.37
+2025-12-19,Implementação - Cliente Orion,entrada,2731.35
+2025-12-19,Manutenção de equipamento,saida,706.87
+2025-12-22,Compra de insumos,saida,1145.05
+2025-12-22,Consultoria - Cliente Prisma,entrada,2109.72
+2025-12-22,Impostos sobre faturamento,saida,2451.15
+2025-12-22,Pró-labore,saida,2443.07
+2025-12-23,Frete e entregas,saida,226.16
+2025-12-23,Transporte,saida,196.51
+2025-12-24,Hospedagem e infraestrutura,saida,464.61
+2025-12-25,Compra de insumos,saida,862.22
+2025-12-26,Marketing digital,saida,931.54
+2025-12-26,Material de escritório,saida,305.06
+2025-12-26,Serviço terceirizado,saida,1755.90
+2025-12-30,Compra de insumos,saida,1003.84
+2025-12-30,Frete e entregas,saida,66.96
+2025-12-30,Serviço mensal - Cliente Aurora,entrada,2075.10
+2025-12-30,Suporte técnico - Cliente Vertex,entrada,1662.35
+2025-12-31,Marketing digital,saida,346.38
+2025-12-31,Taxas bancárias,saida,44.99

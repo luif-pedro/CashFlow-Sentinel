@@ -2,8 +2,8 @@ const API_URL = 'http://localhost:8000'
 
 
 export async function buscarDadosDashboard(
-  dataInicio = '2026-08-24',
-  dataFim = '2026-08-25'
+  dataInicio = '2025-12-01',
+  dataFim = '2025-12-31'
 ) {
   const respostaFluxo = await fetch(
     `${API_URL}/fluxo-caixa?data_inicio=${dataInicio}&data_fim=${dataFim}`

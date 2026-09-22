@@ -10,7 +10,7 @@ random.seed(42)
 
 ARQUIVO_SAIDA = (
     Path(__file__).parent
-    / "transacoes_demo.csv"
+    / "transacoes_demo_2025.csv"
 )
 
 
@@ -430,14 +430,13 @@ def gerar_mes(
 def gerar_dataset():
     transacoes = []
 
-    for mes in [
-        6,
-        7,
-        8,
-    ]:
+    for mes in range(
+        1,
+        13,
+    ):
         gerar_mes(
             transacoes,
-            2026,
+            2025,
             mes,
         )
 
@@ -479,6 +478,9 @@ def salvar_csv(transacoes):
 def mostrar_resumo(transacoes):
     resumo = {}
 
+    total_entradas = 0.0
+    total_saidas = 0.0
+
     for transacao in transacoes:
         mes = transacao[
             "data"
@@ -506,10 +508,16 @@ def mostrar_resumo(transacoes):
             resumo[mes][
                 "entradas"
             ] += valor
+
+            total_entradas += valor
+
         else:
             resumo[mes][
                 "saidas"
             ] += valor
+
+            total_saidas += valor
+
 
     print()
     print(
@@ -523,6 +531,7 @@ def mostrar_resumo(transacoes):
     )
 
     print()
+
 
     for mes, dados in resumo.items():
         saldo = (
@@ -553,6 +562,33 @@ def mostrar_resumo(transacoes):
         )
 
         print()
+
+
+    saldo_anual = (
+        total_entradas
+        - total_saidas
+    )
+
+    print(
+        "RESUMO ANUAL"
+    )
+
+    print(
+        f"  Entradas: "
+        f"R$ {total_entradas:.2f}"
+    )
+
+    print(
+        f"  Saídas: "
+        f"R$ {total_saidas:.2f}"
+    )
+
+    print(
+        f"  Saldo: "
+        f"R$ {saldo_anual:.2f}"
+    )
+
+    print()
 
 
 def main():

@@ -20,10 +20,10 @@ function App() {
   const [erroDados, setErroDados] = useState(false)
 
   const [dataInicio, setDataInicio] =
-    useState('2026-08-24')
+  useState('2025-12-01')
 
-  const [dataFim, setDataFim] =
-    useState('2026-08-25')
+const [dataFim, setDataFim] =
+  useState('2025-12-31')
 
   const [telaAtiva, setTelaAtiva] =
     useState('visao-geral')
