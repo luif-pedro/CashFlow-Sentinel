@@ -44,9 +44,14 @@ function Sidebar({
 
         <button
           type="button"
-          className="nav-item"
-          disabled
-          title="Disponível após a integração com o Power BI"
+          className={`nav-item ${
+            itemAtivo === 'analises'
+              ? 'active'
+              : ''
+          }`}
+          onClick={() =>
+            onNavegar('analises')
+          }
         >
           <BarChart3 size={18} />
           <span>Análises</span>

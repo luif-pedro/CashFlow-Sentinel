@@ -980,3 +980,61 @@
     flex-direction: column;
   }
 }
+
+.powerbi-page {
+  width: 100%;
+}
+
+.powerbi-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.powerbi-page-header h1 {
+  margin: 0;
+  font-size: 31px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  color: #111522;
+}
+
+.powerbi-page-header p {
+  margin: 9px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #656873;
+}
+
+.powerbi-card {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid #ece9e2;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(20, 20, 20, 0.045);
+}
+
+.powerbi-card iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+
+@media (max-width: 760px) {
+  .powerbi-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .powerbi-card {
+    min-height: 520px;
+    aspect-ratio: auto;
+  }
+}

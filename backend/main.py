@@ -76,8 +76,8 @@ def listar_transacoes(
             SELECT COUNT(*)
             FROM transacoes
             WHERE empresa_id = %s
-              AND (%s IS NULL OR data >= %s)
-              AND (%s IS NULL OR data <= %s)
+              AND (%s::date IS NULL OR data >= %s::date)
+              AND (%s::date IS NULL OR data <= %s::date)
             """,
             (
                 1,
@@ -94,7 +94,6 @@ def listar_transacoes(
             pagina - 1
         ) * limite
 
-
         cursor.execute(
             """
             SELECT
@@ -105,8 +104,8 @@ def listar_transacoes(
                 valor
             FROM transacoes
             WHERE empresa_id = %s
-              AND (%s IS NULL OR data >= %s)
-              AND (%s IS NULL OR data <= %s)
+              AND (%s::date IS NULL OR data >= %s::date)
+              AND (%s::date IS NULL OR data <= %s::date)
             ORDER BY data DESC, id DESC
             LIMIT %s
             OFFSET %s
@@ -139,14 +138,12 @@ def listar_transacoes(
                 transacao
             )
 
-
         if total == 0:
             total_paginas = 0
         else:
             total_paginas = (
                 total + limite - 1
             ) // limite
-
 
         return {
             "transacoes": transacoes,
