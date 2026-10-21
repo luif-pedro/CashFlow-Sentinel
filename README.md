@@ -121,8 +121,8 @@ CashFlow-Analytics/
 ### 1. Baixe o projeto
 
 ```bash
-git clone https://github.com/luif-pedro/CashFlow-Sentinel.git
-cd CashFlow-Sentinel
+git clone https://github.com/luif-pedro/CashFlow-Analytics.git
+cd CashFlow-Analytics
 ```
 
 
